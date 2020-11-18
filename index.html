@@ -5,18 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
   <link rel="stylesheet" href="./styles/style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
   <title>Choose that Pokemon</title>
 </head>
 <body>
   <header>
-    <label for="search">Search:</label>
-    <input aria-label="search" autocomplete="on" id="search" name="search" placeholder="Pokemon">
+    <!--Preloader-->
+      <div class="preloader">
+        <img src="./assets/white-pokeball.png" alt="">
+      </div>
+    <!--Searchbox-->
+    <img class="pokemon-logo" src="./assets/pokemon-logo.png" alt="pokemon logo">
+    <div class="search-box">
+      <label for="search" class="sr-only"></label>
+      <input type="text" aria-label="search" autocomplete="on" id="search" name="search" placeholder="pokemon" class="search-text">
+      <a class="pokemon-search" href="#"><img src="./assets/white-pokeball.png" alt="pokeball"></i></a>
+    </div>
+
   </header>
 
-  <body></body>
+  <body>
+    
+  </body>
 
   <footer>
-    <p>Create by Cally and Asif at Juno College <i class="fab fa-canadian-maple-leaf"></i></p>
+    <p>Created by Cally and Asif at Juno College <i class="fab fa-canadian-maple-leaf"></i></p>
   </footer>
 
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>

@@ -234,3 +234,199 @@ html {
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: 'Press Start 2P', cursive;
+}
+
+body {
+  font-size: 16px;
+  background-color: #e84118;
+}
+
+.wrapper {
+  max-width: 1200px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+img {
+  margin: 0;
+  width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+header {
+  position: relative;
+  height: 100vh;
+}
+
+.pokemon-logo {
+  width: 400px;
+  position: relative;
+  top: 100px;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.search-box {
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: #140f0b;
+  height: 80px;
+  border-radius: 80px;
+  padding: 10px;
+}
+
+.search-box:hover > .search-text {
+  width: 400px;
+  padding: 0 20px;
+}
+
+.search-box:hover > .pokemon-search {
+  background-color: #e84118;
+}
+
+.pokemon-search {
+  color: #e84118;
+  float: right;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #140f0b;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+.search-text {
+  border: none;
+  background: none;
+  outline: none;
+  float: left;
+  padding: 0;
+  color: #fff;
+  font-family: 'Press Start 2P', cursive;
+  line-height: 80px;
+  width: 0px;
+  -webkit-transition: 1s;
+  transition: 1s;
+  font-size: 4rem;
+}
+
+.preloader {
+  height: 100vh;
+  width: 100vw;
+  background-color: #140f0b;
+  position: relative;
+  z-index: 50;
+}
+
+.preloader img {
+  height: 80px;
+  width: 80px;
+  position: relative;
+  z-index: 100;
+  left: 50px;
+  top: 50px;
+  -webkit-transform: translate(-60%, -50%);
+          transform: translate(-60%, -50%);
+  -webkit-animation: bounce 3s linear forwards;
+          animation: bounce 3s linear forwards;
+}
+
+@-webkit-keyframes bounce {
+  16%, 48%, 78% {
+    top: 50vh;
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+  32% {
+    top: 12.5vh;
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  62% {
+    top: 25vh;
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  90% {
+    top: 37.5vh;
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  100% {
+    top: 50vh;
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+    left: 50%;
+  }
+}
+
+@keyframes bounce {
+  16%, 48%, 78% {
+    top: 50vh;
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+  32% {
+    top: 12.5vh;
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  62% {
+    top: 25vh;
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  90% {
+    top: 37.5vh;
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  100% {
+    top: 50vh;
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+    left: 50%;
+  }
+}
+
+footer {
+  text-align: center;
+  background-color: #2f3640;
+}
+
+footer p {
+  color: white;
+  padding: 10px 0;
+}
+
+footer i {
+  font-size: 2rem;
+}
