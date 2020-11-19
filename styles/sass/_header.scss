@@ -58,6 +58,10 @@ header {
   width: 0px;
   transition: 1s;
   font-size: 4rem;
+  &:focus-within {
+    width: 400px;
+    padding: 0 20px;
+  }
 }
 
 .preloader {

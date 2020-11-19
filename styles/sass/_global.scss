@@ -36,13 +36,26 @@ h1 {
 
 h2 {
   font-family: 'Raleway', sans-serif;
-  font-size: 3rem;
+  font-size: 5rem;
   text-align: center;
+  padding: 20px 0;
+  text-transform: capitalize;
+  position: relative;
+  &::after {
+    content: "";
+    display: block;
+    width: 80px;
+    padding-bottom: 10px;
+    border-bottom: 10px solid $red;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 h3 {
   font-family: 'Raleway', sans-serif;
-  font-size: 4rem;
+  font-size: 3rem;
 }
 
 button {

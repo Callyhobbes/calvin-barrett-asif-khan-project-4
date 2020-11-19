@@ -1,4 +1,4 @@
-// Time-out for preload of plane landing icon
+// Time-out for preload of pokeball icon bouncing
 setTimeout(function () {
   $('.preloader').fadeToggle();
 }, 4000);
@@ -42,7 +42,7 @@ const app = {
         relevantPokemonInfo.forEach(function (y) {
           // console.log(y);
           // Destructure values desired (*optional* just makes typing easier later)
-          const { name, id, sprites: { front_default } } = y;
+          const { name, type } = y;
           // For each object in the relevantPokemonInfo array, create an option that stores the object's name property as it's value attribute.
           const test = $('<option>').attr('value', name).text(name);
           // Target the data list which will hold all our options.
@@ -60,7 +60,7 @@ const app = {
           $('#tester').empty();
           // Store the current value of the input element.
           const current = $('#input1').val();
-          
+
           // For every object in relevantPokemonInfo....
           relevantPokemonInfo.forEach(function (item) {
             console.log(item);
@@ -76,23 +76,28 @@ const app = {
               const pokeID = item.id;
               const pokeName = item.name;
               const elementType = item.types[0].type.name;
+              const image = `https://pokeres.bastionbot.org/images/pokemon/${pokeID}.png`;
 
               const displayPokemon = `
-              <div class="display-results">
-                <div class="pokemon-card">
-                  <div class="background ${elementType}">
-                    <img src="https://pokeres.bastionbot.org/images/pokemon/${pokeID}.png" alt="${pokeName}">
+              <h2>${pokeName}</h2>
+              <div class="display-results wrapper">
+                <img src="${image}" alt="${pokeName}">
+                <div class="pokemon-info">
+                  <div class="base-stats">
+                    <ul>
+                      <li><i class="fas fa-id-badge"></i><h3>ID</h3><span>${pokeID}</span></li>
+                      <li><i class="fas fa-fire"></i><h3>Type</h3><span>${elementType}</span></li>
+                      <li><i class="fas fa-ruler-combined"></i><h3>Height</h3><span>${height} cm</span></li>
+                      <li><i class="fas fa-ruler-combined"></i><h3>Weight</h3><span>${weight} kg</span></li>
+                    </ul>
                   </div>
-                  <div class="pokemon-content">
-                    <h3 class="pokemon-name">${pokeName}</h3>
-                    <span class="pokemon-id">${pokeID}</span>
-                    <span class="pokemon-type">${elementType}</span>
-                    <div class="stats">
-                      <p>HP: ${HP}</p>
-                      <p>Attack: ${attack}</p>
-                      <p>Defense: ${defense}</p>
-                      <p>Speed: ${speed}</p>
-                    </div>
+                  <div class="battle-stats">
+                    <ul>
+                      <li><i class="fas fa-heart"></i><h3>HP</h3><span>${HP}</span></li>
+                      <li><i class="fas fa-meteor"></i><h3>Attack</h3><span>${attack}</span></li>
+                      <li><i class="fas fa-shield-alt"></i><h3>Defense</h3><span>${defense}</span></li>
+                      <li><i class="fas fa-wind"></i><h3>Speed</h3><span>${speed}</span></li>
+                    </ul>
                   </div>
                 </div>
               </div>
