@@ -3,79 +3,65 @@ section {
 }
 
 .display-results {
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  transform-style: preserve-3d;
 }
 
 .pokemon-card {
   width: 300px;
-  height: 400px;
-  margin: 40px;
-  background-color: $black;
+  height: 500px;
+  background-color: $red;
+  padding: 20px;
+  margin: 20px;
   border-radius: 20px;
-  transform-style: preserve-3d;
-  &::before {
-    content: 'ポケモン';
-    position: absolute;
-    top: 60px;
-    left: 40px;
-    font-size: 12rem;
-    transform: rotate(-45deg);
-    color: $white;
-    opacity: 0;
-    transition: .5s;
-    overflow: hidden;
-  }
+  border: 10px solid $yellow;
+  position: relative;
+}
+
+.background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  padding-bottom: 30px;
   img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    max-width: 150px;
-    transition: .5s;
-    z-index: 15;
-    transform-style: preserve-3d;
-    transform: translate3d(-50%, -50%, 75px);
+    width: 80%;
   }
 }
 
-.pokemon-card:hover,
-.pokemon-card:focus {
+.pokemon-content {
+  position: relative;
   &::before {
-    opacity: .4;
-  }
-  & .pokemon-name {
-    opacity: 1;
+  content: "";
+  width: 300px;
+  height: 10px;
+  color: $yellow;
+  display: block;
+  position: absolute;
+  left: -30px;
+  z-index: 5;
   }
 }
 
 .pokemon-name {
-  position: absolute;
-  top: 10px;
-  left: 0;
   text-align: center;
-  color: $white;
-  width: 100%;
-  transform-style: preserve-3d;
-  transform: translate3d(0, 0, 75px);
-  opacity: 0;
-  z-index: 10;
 }
 
-.pokemon-type  {
+.pokemon-type,
+.pokemon-id {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  transition: 0.5s;
-  background-color: $white;
-  transform-style: preserve-3d;
-  z-index: 10;
-  transform: translate3d(-50%, -50%, 50px);
+    top: 5px;
 }
 
+.pokemon-type {
+  right: 20px;
+  text-align: right;
+}
 
+.stats {
+  padding-top: 20px;
+  p {
+    padding: 10px 0;
+  }
+}

@@ -19,25 +19,37 @@
       </div>
     <!--Searchbox-->
     <img class="pokemon-logo" src="./assets/pokemon-logo-black.png" alt="pokemon logo">
-    <div class="search-box">
-      <label for="search" class="sr-only"></label>
-      <input type="text" aria-label="search" autocomplete="on" id="search" name="search" placeholder="pokemon" class="search-text">
-      <a class="pokemon-search" href="#"><img src="./assets/white-pokeball.png" alt="pokeball"></i></a>
-    </div>
+    <form id="testForm" class="search-box" action="">
+      <label for="search" class="sr-only">Search</label>
+      <input id="input1" type="text" list="testList" name="testList" placeholder="pokemon" class="search-text">
+      <datalist id="testList"></datalist>
+      <button id="input2" class="pokemon-search" value="submit"><img src="./assets/white-pokeball.png" alt="pokeball"></button>
+    </form>
 
   </header>
 
   <body>
-    <section class="results">
-      <div class="display-results">
+    <section id="tester" class="testBox">
+      <!--Pokemon Results Displayed-->
+      <!-- <div class="display-results">
         <div class="pokemon-card">
-          <h3 class="pokemon-name">Charizard</h3>
-          <div class="pokemon-type"></div>
-          <img src="./assets/red-pokeball.png" alt="">
+          <span class="pokemon-id">1</span>
+          <span class="pokemon-type">Grass</span>
+          <div class="background">
+            <img src="https://pokeres.bastionbot.org/images/pokemon/1.png" alt="">
+          </div>
+          <div class="pokemon-content">
+            <h3 class="pokemon-name">Bulbasaur</h3>
+            <div class="stats">
+              <p>HP:</p>
+              <p>Attack:</p>
+              <p>Defense:</p>
+              <p>Speed:</p>
+            </div>
+          </div>
         </div>
-      </div>
+      </div> -->
     </section>
-
   </body>
 
   <footer>
