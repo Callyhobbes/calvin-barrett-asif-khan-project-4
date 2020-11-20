@@ -6,6 +6,7 @@ section {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  min-height: 600px;
   img {
     width: 30%;
   }
@@ -34,12 +35,19 @@ i {
 }
 
 .fas {
-  visibility: hidden;
+  color: $red;
+  opacity: 0;
+  transition: .8s;
 }
 
 li:hover .fas,
 li:focus .fas {
-  visibility: visible;
+  opacity: 1;
+}
+
+li:hover h3::before,
+li:focus h3::before {
+  opacity: 1;
 }
 
 span {

@@ -3,28 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
-  <link rel="stylesheet" href="./styles/style.css">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@400;600&family=Raleway:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-
   <title>Choose that Pokemon</title>
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@400;600&family=Raleway:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link type="image/png" href="./assets/red-pokeball.png" rel="icon">
+  <link rel="stylesheet" href="./styles/style.css">
+
 </head>
 <body>
   <header>
     <!--Preloader-->
-      <!-- <div class="preloader">
+      <div class="preloader">
         <img src="./assets/white-pokeball.png" alt="">
-      </div> -->
+      </div>
     <!--Searchbox-->
     <img class="pokemon-logo" src="./assets/pokemon-logo-black.png" alt="pokemon logo">
+    <img class="catchphrase" src="./assets/pokemon-catch-black.png" alt="gotta catch em all">
     <form id="testForm" class="search-box" action="">
       <label for="search" class="sr-only">Search</label>
-      <input id="input1" type="text" list="testList" name="testList" placeholder="pokemon" class="search-text">
+      <input id="input1" type="text" list="testList" name="testList" placeholder="find a pokemon" class="search-text">
       <datalist id="testList"></datalist>
       <button id="input2" class="pokemon-search" value="submit"><img src="./assets/white-pokeball.png" alt="pokeball"></button>
     </form>
+    <div class="arrow">
+      <span></span>
+      <span class="arrow2"></span>
+      <span class="arrow3"></span>
+    </div>
+    
 
   </header>
 
@@ -37,15 +44,15 @@
         <div class="pokemon-info">
           <div class="base-stats">
             <ul>
-              <li><i class="fas fa-id-badge"></i><h3>ID</h3><span>1</span></li>
-              <li><i class="fas fa-fire"></i><h3>Type</h3><span>1</span></li>
+              <li><i class="fas fa-id-badge"></i><h3>Poke ID</h3><span>1</span></li>
+              <li><i class="fas fa-fire"></i><h3>Type</h3><span class="type">1</span></li>
               <li><i class="fas fa-ruler-combined"></i><h3>Height</h3><span>1</span></li>
               <li><i class="fas fa-weight-hanging"></i><h3>Weight</h3><span>1</span></li>
             </ul>
           </div>
           <div class="battle-stats">
             <ul>
-              <li><i class="fas fa-heart"></i><h3>HP</h3><span>1</span></li>
+              <li><i class="fas fa-heart"></i><h3>Health</h3><span>1</span></li>
               <li><i class="fas fa-meteor"></i><h3>Attack</h3><span>1</span></li>
               <li><i class="fas fa-shield-alt"></i><h3>Defense</h3><span>1</span></li>
               <li><i class="fas fa-wind"></i><h3>Speed</h3><span>1</span></li>
@@ -57,7 +64,7 @@
   </body>
 
   <footer>
-    <p>Created by Cally and Asif at Juno College <i class="fab fa-canadian-maple-leaf"></i></p>
+    <!-- <p>Created by <a href="https://github.com/Callyhobbes" target="_blank">Cally</a> and <a href="https://github.com/asif-a-khan" target="_blank">Asif</a> at <a href="https://junocollege.com" target="_blank">Juno College</a> <i class="fab fa-canadian-maple-leaf"></i></p> -->
   </footer>
 
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>

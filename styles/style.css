@@ -352,6 +352,22 @@ h2::after {
 h3 {
   font-family: 'Raleway', sans-serif;
   font-size: 3rem;
+  -webkit-transition: .8s;
+  transition: .8s;
+  text-align: center;
+}
+
+h3::before {
+  content: "";
+  height: 5px;
+  width: 40px;
+  background-color: #e84118;
+  position: absolute;
+  top: 37px;
+  left: 35%;
+  -webkit-transition: .8s;
+  transition: .8s;
+  opacity: 0;
 }
 
 button {
@@ -365,13 +381,151 @@ header {
   background-color: #e84118;
 }
 
+.preloader {
+  height: 100vh;
+  width: 100vw;
+  background-color: #2f3640;
+  position: fixed;
+  z-index: 50;
+}
+
+.preloader img {
+  width: 80px;
+  height: 80px;
+  position: relative;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-animation: bounce 3s linear forwards;
+          animation: bounce 3s linear forwards;
+}
+
+@-webkit-keyframes bounce {
+  16%, 48%, 78% {
+    top: 50%;
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+  32% {
+    top: 12.5%;
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  62% {
+    top: 25%;
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  90% {
+    top: 37.5%;
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  100% {
+    top: 50%;
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+    left: 50%;
+  }
+}
+
+@keyframes bounce {
+  16%, 48%, 78% {
+    top: 50%;
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+  32% {
+    top: 12.5%;
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  62% {
+    top: 25%;
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  90% {
+    top: 37.5%;
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  100% {
+    top: 50%;
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+    left: 50%;
+  }
+}
+
+.pokemon-logo,
+.catchphrase {
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
 .pokemon-logo {
   width: 400px;
   position: relative;
   top: 100px;
+}
+
+.catchphrase {
+  width: 350px;
+  position: absolute;
+  top: 220px;
+}
+
+.arrow {
+  text-align: center;
+  position: absolute;
+  bottom: 15%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+}
+
+.arrow span {
+  display: block;
+  width: 50px;
+  height: 50px;
+  padding: 0px;
+  border-bottom: 10px solid #2f3640;
+  border-right: 10px solid #2f3640;
+  -webkit-transform: translateX(-50%) rotate(225deg);
+          transform: translateX(-50%) rotate(225deg);
+  -webkit-animation: flash 3s 2s infinite;
+          animation: flash 3s 2s infinite;
+  opacity: 0;
+}
+
+.arrow .arrow2 {
+  -webkit-animation: flash 3s 1s infinite;
+          animation: flash 3s 1s infinite;
+}
+
+.arrow .arrow3 {
+  -webkit-animation: flash 3s infinite;
+          animation: flash 3s infinite;
+}
+
+@-webkit-keyframes flash {
+  0%, 50%, 75%, 100% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+}
+
+@keyframes flash {
+  0%, 50%, 75%, 100% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
 }
 
 .search-box {
@@ -426,7 +580,7 @@ header {
   float: left;
   padding: 0;
   color: #fff;
-  font-family: 'Press Start 2P', cursive;
+  font-family: 'Raleway', sans-serif;
   line-height: 80px;
   width: 0px;
   -webkit-transition: 1s;
@@ -437,85 +591,6 @@ header {
 .search-text:focus-within {
   width: 400px;
   padding: 0 20px;
-}
-
-.preloader {
-  height: 100vh;
-  width: 100vw;
-  background-color: #2f3640;
-  position: fixed;
-  z-index: 50;
-}
-
-.preloader img {
-  height: 80px;
-  width: 80px;
-  position: relative;
-  z-index: 100;
-  left: 50px;
-  top: 50px;
-  -webkit-transform: translate(-60%, -50%);
-          transform: translate(-60%, -50%);
-  -webkit-animation: bounce 3s linear forwards;
-          animation: bounce 3s linear forwards;
-}
-
-@-webkit-keyframes bounce {
-  16%, 48%, 78% {
-    top: 50vh;
-    -webkit-animation-timing-function: ease-out;
-            animation-timing-function: ease-out;
-  }
-  32% {
-    top: 12.5vh;
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
-  }
-  62% {
-    top: 25vh;
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
-  }
-  90% {
-    top: 37.5vh;
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
-  }
-  100% {
-    top: 50vh;
-    -webkit-animation-timing-function: ease-out;
-            animation-timing-function: ease-out;
-    left: 50%;
-  }
-}
-
-@keyframes bounce {
-  16%, 48%, 78% {
-    top: 50vh;
-    -webkit-animation-timing-function: ease-out;
-            animation-timing-function: ease-out;
-  }
-  32% {
-    top: 12.5vh;
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
-  }
-  62% {
-    top: 25vh;
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
-  }
-  90% {
-    top: 37.5vh;
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
-  }
-  100% {
-    top: 50vh;
-    -webkit-animation-timing-function: ease-out;
-            animation-timing-function: ease-out;
-    left: 50%;
-  }
 }
 
 section {
@@ -532,6 +607,7 @@ section {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  min-height: 600px;
 }
 
 .display-results img {
@@ -569,12 +645,20 @@ i {
 }
 
 .fas {
-  visibility: hidden;
+  color: #e84118;
+  opacity: 0;
+  -webkit-transition: .8s;
+  transition: .8s;
 }
 
 li:hover .fas,
 li:focus .fas {
-  visibility: visible;
+  opacity: 1;
+}
+
+li:hover h3::before,
+li:focus h3::before {
+  opacity: 1;
 }
 
 span {
@@ -601,4 +685,15 @@ footer p {
 
 footer i {
   font-size: 2rem;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+footer a:hover, footer a:focus {
+  color: #e84118;
 }

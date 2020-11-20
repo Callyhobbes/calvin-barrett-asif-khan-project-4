@@ -8,4 +8,13 @@ footer {
   i {
     font-size: 2rem;
   }
+  a {
+    color: $white;
+    text-decoration: none;
+    transition: .5s;
+    &:hover,
+    &:focus {
+      color: $red;
+    }
+  }
 }

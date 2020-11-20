@@ -85,15 +85,15 @@ const app = {
                 <div class="pokemon-info">
                   <div class="base-stats">
                     <ul>
-                      <li><i class="fas fa-id-badge"></i><h3>ID</h3><span>${pokeID}</span></li>
-                      <li><i class="fas fa-fire"></i><h3>Type</h3><span>${elementType}</span></li>
+                      <li><i class="fas fa-id-badge"></i><h3>Poke ID</h3><span>${pokeID}</span></li>
+                      <li><i class="fas fa-fire"></i><h3>Type</h3><span class="type">${elementType}</span></li>
                       <li><i class="fas fa-ruler-combined"></i><h3>Height</h3><span>${height} cm</span></li>
                       <li><i class="fas fa-ruler-combined"></i><h3>Weight</h3><span>${weight} kg</span></li>
                     </ul>
                   </div>
                   <div class="battle-stats">
                     <ul>
-                      <li><i class="fas fa-heart"></i><h3>HP</h3><span>${HP}</span></li>
+                      <li><i class="fas fa-heart"></i><h3>Health</h3><span>${HP}</span></li>
                       <li><i class="fas fa-meteor"></i><h3>Attack</h3><span>${attack}</span></li>
                       <li><i class="fas fa-shield-alt"></i><h3>Defense</h3><span>${defense}</span></li>
                       <li><i class="fas fa-wind"></i><h3>Speed</h3><span>${speed}</span></li>
@@ -103,7 +103,10 @@ const app = {
               </div>
               `;
 
+              const footer = `<p>Created by <a href="https://github.com/Callyhobbes" target="_blank">Cally</a> and <a href="https://github.com/asif-a-khan" target="_blank">Asif</a> at <a href="https://junocollege.com" target="_blank">Juno College</a> <i class="fab fa-canadian-maple-leaf"></i></p>`;
+
               $('#tester').append(displayPokemon);
+              $('footer').append(footer);
             };
           });
         });

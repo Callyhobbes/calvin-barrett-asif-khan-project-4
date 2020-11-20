@@ -56,6 +56,19 @@ h2 {
 h3 {
   font-family: 'Raleway', sans-serif;
   font-size: 3rem;
+  transition: .8s;
+  text-align: center;
+  &::before {
+    content: "";
+    height: 5px;
+    width: 40px;
+    background-color: $red;
+    position: absolute;
+    top: 37px;
+    left: 35%;
+    transition: .8s;
+    opacity: 0;ba
+  }
 }
 
 button {
