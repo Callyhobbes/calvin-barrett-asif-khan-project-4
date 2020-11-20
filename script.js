@@ -1,3 +1,14 @@
+// Hitting the fisher yates shuffle babyyyyyy.
+Array.prototype.shuffle = function() {
+  let i = this.length;
+  while(--i > 0) {
+    let j = Math.floor(Math.random() * (1 + i));
+    let temp = this[j];
+    this[j] = this[i];
+    this[i] = temp;
+  };
+  return this;
+}
 // Time-out for preload of pokeball icon bouncing
 setTimeout(function () {
   $('.preloader').fadeToggle();
