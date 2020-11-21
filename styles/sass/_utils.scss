@@ -11,17 +11,17 @@ $black: #2f3640;
 }
 
 // Pokemon Types
-.fire {background-color: #e84118;}
-.grass {background-color: #92c88a;}
-.water {background-color: #97b3e6;}
-.electric {background-color: #ffe67f;}
-.ground {background-color: #b9741f;}
-.rock {background-color: #b2adaa;}
-.fairy {background-color: #f9c2c6;}
-.poison {background-color: #a69fc8;}
-.bug {background-color: #cad479;}
-.dragon {background-color: #658ab3;}
-.psychic {background-color: #bb558e;}
-.flying {background-color: #5eb9b2;}
-.fighting {background-color: #f98423;}
-.normal {background-color: #d6d3d4;}
+.fire::after {background-color: #e84118;}
+.grass::after {background-color: #92c88a;}
+.water::after {background-color: #97b3e6;}
+.electric::after {background-color: #ffe67f;}
+.ground::after {background-color: #b9741f;}
+.rock::after {background-color: #b2adaa;}
+.fairy::after {background-color: #f9c2c6;}
+.poison::after {background-color: #a69fc8;}
+.bug::after {background-color: #cad479;}
+.dragon::after {background-color: #658ab3;}
+.psychic::after {background-color: #bb558e;}
+.flying::after {background-color: #5eb9b2;}
+.fighting::after {background-color: #f98423;}
+.normal::after {background-color: #d6d3d4;}

@@ -79,12 +79,12 @@ header {
     transform: translateX(-50%) rotate(225deg);
     animation: flash 3s 2s infinite;
     opacity: 0;
-  }
-  .arrow2 {
-    animation: flash 3s 1s infinite;
-  }
-  .arrow3 {
-    animation: flash 3s infinite;
+    &:nth-of-type(2) {
+      animation: flash 3s 1s infinite;
+    }
+    &:nth-of-type(3) {
+      animation: flash 3s 0s infinite;
+    }
   }
 }
 
@@ -119,7 +119,6 @@ header {
 }
 
 .pokemon-search {
-  color: $red;
   float: right;
   width: 80px;
   height: 80px;

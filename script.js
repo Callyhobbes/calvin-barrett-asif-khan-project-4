@@ -14,6 +14,28 @@ setTimeout(function () {
   $('.preloader').fadeToggle();
 }, 4000);
 
+// smooth scroll from picked-pokemon to because you like section
+$('.picked-pokemon').on('click', 'a', function () {
+  $('.liked').show();
+  $(`html,body`).animate({
+    scrollTop: $('#because-you-like').offset().top
+  }, 1500);
+});
+
+$('.liked').on('click', 'a', function () {
+  // empty the results
+  $('.liked').empty();
+  $('.picked-pokemon').empty();
+  $('footer').empty();
+  // clear the form's checked inputs
+  $('html').trigger('reset');
+  //smooth scroll to top
+  $(`html,body`).animate({
+    scrollTop: $('#start').offset().top
+  }, 1500);
+});
+
+
 const app = {
   // Root Api
   rootApi: 'https://pokeapi.co/api/v2/',
@@ -31,7 +53,8 @@ const app = {
   },
   // Logic for searchbox
   loop() {
-    // Create an empty array
+
+    // Create an empty array for each pokemon type
     const cachedPokemon = [];
     const fireArray = [];
     const grassArray = [];
@@ -138,20 +161,28 @@ const app = {
           })
           
         });
-        // Input2 is the button element that comes after the input element.
+        // #pokeball is the button element that comes after the input element.
         // When the button is clicked...
-        $('#input2').on('click', function (e) {
+        $('#pokeball').on('click', function (e) {
+
           // Don't reset the input field.
           e.preventDefault();
+          
+          //smooth scroll to the picked pokemon section
+          $(`html,body`).animate({
+            scrollTop: $('.picked-pokemon').offset().top
+          }, 1500);
+          
           // Then empty the area you want to append the pokemon to so that only 1 pokemon is shown at a time.
-          $('#tester').empty();
-          $('#newTest').empty();
-          $('.testSection').show();
+          $('.picked-pokemon').empty();
+          $('.liked').empty();
+
           // Store the current value of the input element.
           let current = $('#input1').val();
+
           // For every object in relevantPokemonInfo....
           relevantPokemonInfo.forEach(function (item) {
-            // console.log(item);
+
             // If, that object's name property is the same as the current input the user selected then...
             if (item.name === current) {
               
@@ -165,10 +196,13 @@ const app = {
               const pokeName = item.name;
               const elementType = item.types[0].type.name;
               const image = `https://pokeres.bastionbot.org/images/pokemon/${pokeID}.png`;
+              
               const displayPokemon = `
               <h2>${pokeName}</h2>
               <div class="display-results wrapper">
-                <img src="${image}" alt="${pokeName}">
+                <div class="poke-image ${elementType}">
+                  <img src="${image}" alt="${pokeName}">
+                </div>
                 <div class="pokemon-info">
                   <div class="base-stats">
                     <ul>
@@ -188,8 +222,25 @@ const app = {
                   </div>
                 </div>
               </div>
+              <div class="next-section wrapper">
+                <a href="#because-you-like">Find More</a>
+              </div>
               `;
-              $('#tester').append(displayPokemon);
+
+              const displayFooter =`
+              <p>Created by <a href="https://github.com/Callyhobbes" target="_blank">Cally</a> and <a href="https://github.com/asif-a-khan" target="_blank">Asif</a> at <a href="https://junocollege.com" target="_blank">Juno College</a> <i class="fab fa-canadian-maple-leaf"></i></p>
+              `;
+
+              const suggestedPokemon = `
+                <h2>Other Pokemon You May Like</h2>
+                <div class="suggestion-results"></div>
+                <div class="next-section wrapper">
+                  <a href="#start">Find More</a>
+                </div>
+                `;
+
+              $('.picked-pokemon').append(displayPokemon);
+              $('footer').append(displayFooter);
               
               // If the selected pokemon's type is fire do this
               if (elementType === 'fire') {
@@ -207,11 +258,9 @@ const app = {
                 };
                 // Loop through this array backwards. 
                 copiedArray.shuffle();
-                // Create Title for suggestion area (REWRITE)
-                const suggestionHeading = $('<h2>').text('Other Pokemon You May Like');
-                const suggestionResults = $('<div>').attr('class', 'suggestion-results');
+
                 // Append title to suggestion area.
-                $('.liked').append(suggestionHeading, suggestionResults);
+                $('.liked').append(suggestedPokemon);
                 // Run this code 4 times.
                 for (let i = 0; i < 4; i++) {
                   // Create a div containing the pokemon name and image.
@@ -231,10 +280,9 @@ const app = {
                   };
                 };
                 copiedArray.shuffle();
-                console.log(copiedArray);
-                const suggestionHeading = $('<h2>').text('Other Pokemon You May Like');
-                const suggestionResults = $('<div>').attr('class', 'suggestion-results');
-                $('.liked').append(suggestionHeading, suggestionResults);
+                
+
+                $('.liked').append(suggestedPokemon);
                 for (let i = 0; i < 4; i++) {
                   const displayRecImg = `<img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png">`;
                   const displayRecName = $('<h3>').text(copiedArray[i].name);
@@ -257,13 +305,9 @@ const app = {
                 };
                 // Loop through this array backwards. 
                 copiedArray.shuffle();
-                // Testing array
-                console.log(copiedArray);
-                // Create Title for suggestion area (REWRITE)
-                const suggestionHeading = $('<h2>').text('Other Pokemon You May Like');
-                const suggestionResults = $('<div>').attr('class', 'suggestion-results');
-                // Append title to suggestion area.
-                $('.liked').append(suggestionHeading, suggestionResults);
+                
+                $('.liked').append(suggestedPokemon);
+
                 // Run this code 4 times.
                 for (let i = 0; i < 4; i++) {
                   // Create a div containing the pokemon name and image.
@@ -292,10 +336,9 @@ const app = {
                 // Testing array
                 console.log(copiedArray);
                 // Create Title for suggestion area (REWRITE)
-                const suggestionHeading = $('<h2>').text('Other Pokemon You May Like');
-                const suggestionResults = $('<div>').attr('class', 'suggestion-results');
-                // Append title to suggestion area.
-                $('.liked').append(suggestionHeading, suggestionResults);
+                
+                $('.liked').append(suggestedPokemon);
+
                 // Run this code 4 times.
                 for (let i = 0; i < 4; i++) {
                   // Create a div containing the pokemon name and image.
@@ -325,10 +368,9 @@ const app = {
                 // Testing array
                 console.log(copiedArray);
                 // Create Title for suggestion area (REWRITE)
-                const suggestionHeading = $('<h2>').text('Other Pokemon You May Like');
-                const suggestionResults = $('<div>').attr('class', 'suggestion-results');
-                // Append title to suggestion area.
-                $('.liked').append(suggestionHeading, suggestionResults);
+                
+                $('.liked').append(suggestedPokemon);
+
                 // Run this code 4 times.
                 for (let i = 0; i < 4; i++) {
                   // Create a div containing the pokemon name and image.
@@ -358,10 +400,9 @@ const app = {
                 // Testing array
                 console.log(copiedArray);
                 // Create Title for suggestion area (REWRITE)
-                const suggestionHeading = $('<h2>').text('Other Pokemon You May Like');
-                const suggestionResults = $('<div>').attr('class', 'suggestion-results');
-                // Append title to suggestion area.
-                $('.liked').append(suggestionHeading, suggestionResults);
+                
+                $('.liked').append(suggestedPokemon);
+
                 // Run this code 4 times.
                 for (let i = 0; i < 4; i++) {
                   // Create a div containing the pokemon name and image.
@@ -391,10 +432,9 @@ const app = {
                 // Testing array
                 console.log(copiedArray);
                 // Create Title for suggestion area (REWRITE)
-                const suggestionHeading = $('<h2>').text('Other Pokemon You May Like');
-                const suggestionResults = $('<div>').attr('class', 'suggestion-results');
-                // Append title to suggestion area.
-                $('.liked').append(suggestionHeading, suggestionResults);
+                
+                $('.liked').append(suggestedPokemon);
+
                 // Run this code 4 times.
                 for (let i = 0; i < 4; i++) {
                   // Create a div containing the pokemon name and image.
@@ -424,10 +464,9 @@ const app = {
                 // Testing array
                 console.log(copiedArray);
                 // Create Title for suggestion area (REWRITE)
-                const suggestionHeading = $('<h2>').text('Other Pokemon You May Like');
-                const suggestionResults = $('<div>').attr('class', 'suggestion-results');
-                // Append title to suggestion area.
-                $('.liked').append(suggestionHeading, suggestionResults);
+                
+                $('.liked').append(suggestedPokemon);
+
                 // Run this code 4 times.
                 for (let i = 0; i < 4; i++) {
                   // Create a div containing the pokemon name and image.
@@ -457,10 +496,9 @@ const app = {
                 // Testing array
                 console.log(copiedArray);
                 // Create Title for suggestion area (REWRITE)
-                const suggestionHeading = $('<h2>').text('Other Pokemon You May Like');
-                const suggestionResults = $('<div>').attr('class', 'suggestion-results');
-                // Append title to suggestion area.
-                $('.liked').append(suggestionHeading, suggestionResults);
+                
+                $('.liked').append(suggestedPokemon);
+
                 // Run this code 4 times.
                 for (let i = 0; i < 4; i++) {
                   // Create a div containing the pokemon name and image.
@@ -490,10 +528,9 @@ const app = {
                 // Testing array
                 console.log(copiedArray);
                 // Create Title for suggestion area (REWRITE)
-                const suggestionHeading = $('<h2>').text('Other Pokemon You May Like');
-                const suggestionResults = $('<div>').attr('class', 'suggestion-results');
-                // Append title to suggestion area.
-                $('.liked').append(suggestionHeading, suggestionResults);
+                
+                $('.liked').append(suggestedPokemon);
+
                 // Run this code 4 times.
                 for (let i = 0; i < 4; i++) {
                   // Create a div containing the pokemon name and image.
@@ -523,10 +560,9 @@ const app = {
                 // Testing array
                 console.log(copiedArray);
                 // Create Title for suggestion area (REWRITE)
-                const suggestionHeading = $('<h2>').text('Other Pokemon You May Like');
-                const suggestionResults = $('<div>').attr('class', 'suggestion-results');
-                // Append title to suggestion area.
-                $('.liked').append(suggestionHeading, suggestionResults);
+                
+                $('.liked').append(suggestedPokemon);
+
                 // Run this code 4 times.
                 for (let i = 0; i < 4; i++) {
                   // Create a div containing the pokemon name and image.
@@ -556,10 +592,9 @@ const app = {
                 // Testing array
                 console.log(copiedArray);
                 // Create Title for suggestion area (REWRITE)
-                const suggestionHeading = $('<h2>').text('Other Pokemon You May Like');
-                const suggestionResults = $('<div>').attr('class', 'suggestion-results');
-                // Append title to suggestion area.
-                $('.liked').append(suggestionHeading, suggestionResults);
+                
+                $('.liked').append(suggestedPokemon);
+
                 // Run this code 4 times.
                 for (let i = 0; i < 4; i++) {
                   // Create a div containing the pokemon name and image.
@@ -589,10 +624,9 @@ const app = {
                 // Testing array
                 console.log(copiedArray);
                 // Create Title for suggestion area (REWRITE)
-                const suggestionHeading = $('<h2>').text('Other Pokemon You May Like');
-                const suggestionResults = $('<div>').attr('class', 'suggestion-results');
-                // Append title to suggestion area.
-                $('.liked').append(suggestionHeading, suggestionResults);
+                
+                $('.liked').append(suggestedPokemon);
+
                 // Run this code 4 times.
                 for (let i = 0; i < 4; i++) {
                   // Create a div containing the pokemon name and image.
@@ -622,10 +656,9 @@ const app = {
                 // Testing array
                 console.log(copiedArray);
                 // Create Title for suggestion area (REWRITE)
-                const suggestionHeading = $('<h2>').text('Other Pokemon You May Like');
-                const suggestionResults = $('<div>').attr('class', 'suggestion-results');
-                // Append title to suggestion area.
-                $('.liked').append(suggestionHeading, suggestionResults);
+                
+                $('.liked').append(suggestedPokemon);
+
                 // Run this code 4 times.
                 for (let i = 0; i < 4; i++) {
                   // Create a div containing the pokemon name and image.
@@ -655,10 +688,9 @@ const app = {
                 // Testing array
                 console.log(copiedArray);
                 // Create Title for suggestion area (REWRITE)
-                const suggestionHeading = $('<h2>').text('Other Pokemon You May Like');
-                const suggestionResults = $('<div>').attr('class', 'suggestion-results');
-                // Append title to suggestion area.
-                $('.liked').append(suggestionHeading, suggestionResults);
+
+                $('.liked').append(suggestedPokemon);
+
                 // Run this code 4 times.
                 for (let i = 0; i < 4; i++) {
                   // Create a div containing the pokemon name and image.
@@ -688,10 +720,9 @@ const app = {
                 // Testing array
                 console.log(copiedArray);
                 // Create Title for suggestion area (REWRITE)
-                const suggestionHeading = $('<h2>').text('Other Pokemon You May Like');
-                const suggestionResults = $('<div>').attr('class', 'suggestion-results');
-                // Append title to suggestion area.
-                $('.liked').append(suggestionHeading, suggestionResults);
+                
+                $('.liked').append(suggestedPokemon);
+
                 // Run this code 4 times.
                 for (let i = 0; i < 4; i++) {
                   // Create a div containing the pokemon name and image.
