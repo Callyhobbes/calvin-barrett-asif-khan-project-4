@@ -291,6 +291,14 @@ html {
   background-color: #d6d3d4;
 }
 
+.steel::after {
+  background-color: black;
+}
+
+.dark::after {
+  background-color: darkslategrey;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -755,7 +763,6 @@ span {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  background-color: #e84118;
   opacity: 0;
   -webkit-transition: .8s;
   transition: .8s;

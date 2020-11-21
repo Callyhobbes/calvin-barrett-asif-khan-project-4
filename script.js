@@ -9,11 +9,14 @@ Array.prototype.shuffle = function() {
   };
   return this;
 }
+// Preload Animation Start
 // Time-out for preload of pokeball icon bouncing
 setTimeout(function () {
   $('.preloader').fadeToggle();
 }, 4000);
+// Preload animation End
 
+// Toggles for results
 // smooth scroll from picked-pokemon to because you like section
 $('.picked-pokemon').on('click', 'a', function () {
   $('.liked').show();
@@ -29,21 +32,23 @@ $('.liked').on('click', 'a', function () {
   $('footer').empty();
   // clear the form's checked inputs
   $('html').trigger('reset');
+  $('.liked').hide();
   //smooth scroll to top
   $(`html,body`).animate({
     scrollTop: $('#start').offset().top
   }, 1500);
 });
+// Toggles for results END.
 
-
+// Declaring application object
 const app = {
   // Root Api
   rootApi: 'https://pokeapi.co/api/v2/',
   // Initialize all necessary methods.
   init() {
-    app.loop();
+    this.loop();
   },
-  // This will make an ajax call to the pokemon api at whatever endpoint is specified in the parameter.
+  // This method will make an ajax call to the pokemon api at whatever endpoint is specified in the parameter.
   callApi(x) {
     return $.ajax({
       url: app.rootApi + x,
@@ -53,7 +58,6 @@ const app = {
   },
   // Logic for searchbox
   loop() {
-
     // Create an empty array for each pokemon type
     const cachedPokemon = [];
     const fireArray = [];
@@ -72,12 +76,13 @@ const app = {
     const normalArray = [];
     const bugArray = [];
     const steelArray = [];
-    // Run this block of code 151 times because, gen 1 duh.
-    for (let i = 1; i <= 151; i++) {
-      // Everytime this block is run iterate through the pokemon endpoints using i as the id. Push each ajax promise object into the empty array.
+    const darkArray = [];
+    const dragonArray = [];
+    // Run the following block of code 807 times to retrieve all pokemon up to gen 7.
+    // Everytime this block is run iterate through the pokemon endpoints using i as the id. Push each ajax promise object into the empty array.
+    for (let i = 1; i <= 807; i++) {
       cachedPokemon.push(app.callApi("pokemon/" + i));
     }
-
     // When all the promise objects are resolved and placed inside cachedPokemon...
     $.when(...cachedPokemon)
       //THEN spread each object inside of cachedPokemon
@@ -87,20 +92,19 @@ const app = {
         const relevantPokemonInfo = x.map(function (y) {
           return y[0];
         });
-
-        //For every object (y) in the relevantPokemonInfo array, create/target the following elements using information from each object.
+        //For every object (y) in the relevantPokemonInfo array.
         relevantPokemonInfo.forEach(function (y) {
-          // console.log(y);
           // Destructure values desired (*optional* just makes typing easier later)
-          const { name, types, id} = y;
           // For each object in the relevantPokemonInfo array, create an option that stores the object's name property as it's value attribute.
-          const test = $('<option>').attr('value', name).text(name);
           // Target the data list which will hold all our options.
-          const testList = $('#testList');
           // For every object in the relevantPokemonInfo array, append the option element that was created.
-          testList.append(test);
           // For each object in the types endpoint, create a factory function that returns a pokemon with properties we want to use for the suggestions box.
+          const { name, types, id} = y;
+          const test = $('<option>').attr('value', name).text(name);
+          const testList = $('#testList');
+          testList.append(test);
           types.forEach(object => {
+            // Factory function
             const factoryPokemon = (name, id) => {
               return {
                 name,
@@ -157,6 +161,12 @@ const app = {
                   case 'steel': 
                     steelArray.push(factoryPokemon(name, id));
                     break;
+                  case 'dark': 
+                    darkArray.push(factoryPokemon(name, id));
+                    break;
+                  case 'dragon': 
+                    dragonArray.push(factoryPokemon(name, id));
+                    break;
                 }
           })
           
@@ -164,28 +174,21 @@ const app = {
         // #pokeball is the button element that comes after the input element.
         // When the button is clicked...
         $('#pokeball').on('click', function (e) {
-
           // Don't reset the input field.
-          e.preventDefault();
-          
-          //smooth scroll to the picked pokemon section
+          //smooth scroll to the picked pokemon section.
+          // Then empty the area you want to append the pokemon to so that only 1 pokemon is shown at a time.
+          // Store the current value of the input element.
+          e.preventDefault();       
           $(`html,body`).animate({
             scrollTop: $('.picked-pokemon').offset().top
           }, 1500);
-          
-          // Then empty the area you want to append the pokemon to so that only 1 pokemon is shown at a time.
           $('.picked-pokemon').empty();
           $('.liked').empty();
-
-          // Store the current value of the input element.
           let current = $('#input1').val();
-
           // For every object in relevantPokemonInfo....
           relevantPokemonInfo.forEach(function (item) {
-
-            // If, that object's name property is the same as the current input the user selected then...
+            // If, that object's name property is the same as the current input the user selected then create variables based on the object's properties.
             if (item.name === current) {
-              
               const HP = item.stats[0].base_stat;
               const attack = item.stats[1].base_stat;
               const defense = item.stats[2].base_stat;
@@ -196,7 +199,7 @@ const app = {
               const pokeName = item.name;
               const elementType = item.types[0].type.name;
               const image = `https://pokeres.bastionbot.org/images/pokemon/${pokeID}.png`;
-              
+              // Main Template
               const displayPokemon = `
               <h2>${pokeName}</h2>
               <div class="display-results wrapper">
@@ -226,25 +229,25 @@ const app = {
                 <a href="#because-you-like">Find More</a>
               </div>
               `;
-
+              // Footer Template
               const displayFooter =`
               <p>Created by <a href="https://github.com/Callyhobbes" target="_blank">Cally</a> and <a href="https://github.com/asif-a-khan" target="_blank">Asif</a> at <a href="https://junocollege.com" target="_blank">Juno College</a> <i class="fab fa-canadian-maple-leaf"></i></p>
               `;
-
+              // Suggested pokemon template
               const suggestedPokemon = `
                 <h2>Other Pokemon You May Like</h2>
                 <div class="suggestion-results"></div>
                 <div class="next-section wrapper">
-                  <a href="#start">Find More</a>
+                  <a id="secondButton" href="#start">Back To Top</a>
                 </div>
                 `;
-
+              
               $('.picked-pokemon').append(displayPokemon);
               $('footer').append(displayFooter);
               
-              // If the selected pokemon's type is fire do this
+              // Based on the pokemon's type, display related pokemon.
               if (elementType === 'fire') {
-                // Create a copy of fireArray to manipulate.
+                // Create a copy of the array that contains the current element's pokemon to manipulate.
                 const copiedArray = fireArray.map(x => x);
                 // RUn this block of code as many times as it takes to go through the copied array.
                 for (let i = 0; i < copiedArray.length; i++) {
@@ -258,481 +261,342 @@ const app = {
                 };
                 // Loop through this array backwards. 
                 copiedArray.shuffle();
-
                 // Append title to suggestion area.
                 $('.liked').append(suggestedPokemon);
+                // Create html template for pokemon to be displayed. 
                 // Run this code 4 times.
                 for (let i = 0; i < 4; i++) {
-                  // Create a div containing the pokemon name and image.
-                  const displayRecImg = `<img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png">`;
-                  const displayRecName = $('<h3>').text(copiedArray[i].name); 
-                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('pokemon-holder').append(displayRecName, displayRecImg);
-                  // Append the div into the suggestion area.
-                  $('.suggestion-results').append(displayRec);
-                  // REPEAT THIS IF STATEMENT FOR ALL OTHER ELEMENTS. MAKE SURE COPIED ARRAY IS COPYING THE RESPECTIVE ELEMENT'S ARRAY.
+                  const pokemonHolder = `
+                  <div class="pokemon-holder ${elementType}" value="${copiedArray[i].id}">
+                    <h3>${copiedArray[i].name}</h3>
+                    <img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png" alt="A picture of ${copiedArray[i].name}">
+                  </div>
+                  `;
+                  $('.suggestion-results').append(pokemonHolder);
                 };
+                // REPEAT THIS IF STATEMENT FOR ALL OTHER ELEMENTS. MAKE SURE COPIED ARRAY IS COPYING THE RESPECTIVE ELEMENT'S ARRAY.
               } else if (elementType === 'water') {
                 const copiedArray = waterArray.map(x => x);
                 for (let i = 0; i < copiedArray.length; i++) {
                   if (copiedArray[i].name === current) {
                     const selectedIndex = copiedArray.indexOf(copiedArray[i]);
-                    const removed = copiedArray.splice(selectedIndex, 1);
+                    copiedArray.splice(selectedIndex, 1);
                   };
                 };
                 copiedArray.shuffle();
-                
-
                 $('.liked').append(suggestedPokemon);
                 for (let i = 0; i < 4; i++) {
-                  const displayRecImg = `<img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png">`;
-                  const displayRecName = $('<h3>').text(copiedArray[i].name);
-                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('pokemon-holder').append(displayRecName, displayRecImg);
-                  // Append the div into the suggestion area.
-                  $('.suggestion-results').append(displayRec);
+                  const pokemonHolder = `
+                  <div class="pokemon-holder ${elementType}" value="${copiedArray[i].id}">
+                    <h3>${copiedArray[i].name}</h3>
+                    <img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png" alt="A picture of ${copiedArray[i].name}">
+                  </div>
+                  `;
+                  $('.suggestion-results').append(pokemonHolder);
                 };
               } else if (elementType === 'grass') {
-                // Create a copy of fireArray to manipulate.
                 const copiedArray = grassArray.map(x => x);
-                // RUn this block of code as many times as it takes to go through the copied array.
                 for (let i = 0; i < copiedArray.length; i++) {
-                  // For every object in copiedArray at index[i], if, the object's name is = the selected pokemon's name. Then, do this.
                   if (copiedArray[i].name === current) {
-                    // Save this object's index in the copied array.
                     const selectedIndex = copiedArray.indexOf(copiedArray[i]);
-                    // Remove selected pokemon from copied array.
                     copiedArray.splice(selectedIndex, 1);
                   };
                 };
-                // Loop through this array backwards. 
                 copiedArray.shuffle();
-                
                 $('.liked').append(suggestedPokemon);
-
-                // Run this code 4 times.
                 for (let i = 0; i < 4; i++) {
-                  // Create a div containing the pokemon name and image.
-                  const displayRecImg = `<img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png">`;
-                  const displayRecName = $('<h3>').text(copiedArray[i].name);
-                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('pokemon-holder').append(displayRecName, displayRecImg);
-                  // Append the div into the suggestion area.
-                  $('.suggestion-results').append(displayRec);
-                  // REPEAT THIS IF STATEMENT FOR ALL OTHER ELEMENTS. MAKE SURE COPIED ARRAY IS COPYING THE RESPECTIVE ELEMENT'S ARRAY.
+                  const pokemonHolder = `
+                  <div class="pokemon-holder ${elementType}" value="${copiedArray[i].id}">
+                    <h3>${copiedArray[i].name}</h3>
+                    <img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png" alt="A picture of ${copiedArray[i].name}">
+                  </div>
+                  `;
+                  $('.suggestion-results').append(pokemonHolder);
                 };
               } else if (elementType === 'electric') {
-                // Create a copy of fireArray to manipulate.
                 const copiedArray = electricArray.map(x => x);
-                // RUn this block of code as many times as it takes to go through the copied array.
                 for (let i = 0; i < copiedArray.length; i++) {
-                  // For every object in copiedArray at index[i], if, the object's name is = the selected pokemon's name. Then, do this.
                   if (copiedArray[i].name === current) {
-                    // Save this object's index in the copied array.
                     const selectedIndex = copiedArray.indexOf(copiedArray[i]);
-                    // Remove selected pokemon from copied array.
                     copiedArray.splice(selectedIndex, 1);
                   };
                 };
-                // Loop through this array backwards. 
                 copiedArray.shuffle();
-                // Testing array
-                console.log(copiedArray);
-                // Create Title for suggestion area (REWRITE)
-                
                 $('.liked').append(suggestedPokemon);
-
-                // Run this code 4 times.
                 for (let i = 0; i < 4; i++) {
-                  // Create a div containing the pokemon name and image.
-                  const displayRecImg = `<img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png">`;
-                  const displayRecName = $('<h3>').text(copiedArray[i].name); 
-                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('pokemon-holder').append(displayRecName, displayRecImg);
-                  // const newTestWrap = $('<div>').attr('id', 'newTestWrap').append(displayRec);
-                  // Append the div into the suggestion area.
-                  $('.suggestion-results').append(displayRec);
-                  // REPEAT THIS IF STATEMENT FOR ALL OTHER ELEMENTS. MAKE SURE COPIED ARRAY IS COPYING THE RESPECTIVE ELEMENT'S ARRAY.
+                  const pokemonHolder = `
+                  <div class="pokemon-holder ${elementType}" value="${copiedArray[i].id}">
+                    <h3>${copiedArray[i].name}</h3>
+                    <img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png" alt="A picture of ${copiedArray[i].name}">
+                  </div>
+                  `;
+                  $('.suggestion-results').append(pokemonHolder);
                 };
               } else if (elementType === 'poison') {
-                // Create a copy of fireArray to manipulate.
                 const copiedArray = poisonArray.map(x => x);
-                // RUn this block of code as many times as it takes to go through the copied array.
                 for (let i = 0; i < copiedArray.length; i++) {
-                  // For every object in copiedArray at index[i], if, the object's name is = the selected pokemon's name. Then, do this.
                   if (copiedArray[i].name === current) {
-                    // Save this object's index in the copied array.
                     const selectedIndex = copiedArray.indexOf(copiedArray[i]);
-                    // Remove selected pokemon from copied array.
                     copiedArray.splice(selectedIndex, 1);
                   };
                 };
-                // Loop through this array backwards. 
                 copiedArray.shuffle();
-                // Testing array
-                console.log(copiedArray);
-                // Create Title for suggestion area (REWRITE)
-                
                 $('.liked').append(suggestedPokemon);
-
-                // Run this code 4 times.
                 for (let i = 0; i < 4; i++) {
-                  // Create a div containing the pokemon name and image.
-                  const displayRecImg = `<img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png">`;
-                  const displayRecName = $('<h3>').text(copiedArray[i].name); 
-                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('pokemon-holder').append(displayRecName, displayRecImg);
-                  // const newTestWrap = $('<div>').attr('id', 'newTestWrap').append(displayRec);
-                  // Append the div into the suggestion area.
-                  $('.suggestion-results').append(displayRec);
-                  // REPEAT THIS IF STATEMENT FOR ALL OTHER ELEMENTS. MAKE SURE COPIED ARRAY IS COPYING THE RESPECTIVE ELEMENT'S ARRAY.
+                  const pokemonHolder = `
+                  <div class="pokemon-holder ${elementType}" value="${copiedArray[i].id}">
+                    <h3>${copiedArray[i].name}</h3>
+                    <img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png" alt="A picture of ${copiedArray[i].name}">
+                  </div>
+                  `;
+                  $('.suggestion-results').append(pokemonHolder);
                 };
               } else if (elementType === 'rock') {
-                // Create a copy of fireArray to manipulate.
                 const copiedArray = rockArray.map(x => x);
-                // RUn this block of code as many times as it takes to go through the copied array.
                 for (let i = 0; i < copiedArray.length; i++) {
-                  // For every object in copiedArray at index[i], if, the object's name is = the selected pokemon's name. Then, do this.
                   if (copiedArray[i].name === current) {
-                    // Save this object's index in the copied array.
                     const selectedIndex = copiedArray.indexOf(copiedArray[i]);
-                    // Remove selected pokemon from copied array.
                     copiedArray.splice(selectedIndex, 1);
                   };
                 };
-                // Loop through this array backwards. 
                 copiedArray.shuffle();
-                // Testing array
-                console.log(copiedArray);
-                // Create Title for suggestion area (REWRITE)
-                
                 $('.liked').append(suggestedPokemon);
-
-                // Run this code 4 times.
                 for (let i = 0; i < 4; i++) {
-                  // Create a div containing the pokemon name and image.
-                  const displayRecImg = `<img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png">`;
-                  const displayRecName = $('<h3>').text(copiedArray[i].name); 
-                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('pokemon-holder').append(displayRecName, displayRecImg);
-                  // const newTestWrap = $('<div>').attr('id', 'newTestWrap').append(displayRec);
-                  // Append the div into the suggestion area.
-                  $('.suggestion-results').append(displayRec);
-                  // REPEAT THIS IF STATEMENT FOR ALL OTHER ELEMENTS. MAKE SURE COPIED ARRAY IS COPYING THE RESPECTIVE ELEMENT'S ARRAY.
+                  const pokemonHolder = `
+                  <div class="pokemon-holder ${elementType}" value="${copiedArray[i].id}">
+                    <h3>${copiedArray[i].name}</h3>
+                    <img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png" alt="A picture of ${copiedArray[i].name}">
+                  </div>
+                  `;
+                  $('.suggestion-results').append(pokemonHolder);
                 };
               } else if (elementType === 'ground') {
-                // Create a copy of fireArray to manipulate.
                 const copiedArray = groundArray.map(x => x);
-                // RUn this block of code as many times as it takes to go through the copied array.
                 for (let i = 0; i < copiedArray.length; i++) {
-                  // For every object in copiedArray at index[i], if, the object's name is = the selected pokemon's name. Then, do this.
                   if (copiedArray[i].name === current) {
-                    // Save this object's index in the copied array.
                     const selectedIndex = copiedArray.indexOf(copiedArray[i]);
-                    // Remove selected pokemon from copied array.
                     copiedArray.splice(selectedIndex, 1);
                   };
                 };
-                // Loop through this array backwards. 
                 copiedArray.shuffle();
-                // Testing array
-                console.log(copiedArray);
-                // Create Title for suggestion area (REWRITE)
-                
                 $('.liked').append(suggestedPokemon);
-
-                // Run this code 4 times.
                 for (let i = 0; i < 4; i++) {
-                  // Create a div containing the pokemon name and image.
-                  const displayRecImg = `<img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png">`;
-                  const displayRecName = $('<h3>').text(copiedArray[i].name); 
-                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('pokemon-holder').append(displayRecName, displayRecImg);
-                  // const newTestWrap = $('<div>').attr('id', 'newTestWrap').append(displayRec);
-                  // Append the div into the suggestion area.
-                  $('.suggestion-results').append(displayRec);
-                  // REPEAT THIS IF STATEMENT FOR ALL OTHER ELEMENTS. MAKE SURE COPIED ARRAY IS COPYING THE RESPECTIVE ELEMENT'S ARRAY.
+                  const pokemonHolder = `
+                  <div class="pokemon-holder ${elementType}" value="${copiedArray[i].id}">
+                    <h3>${copiedArray[i].name}</h3>
+                    <img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png" alt="A picture of ${copiedArray[i].name}">
+                  </div>
+                  `;
+                  $('.suggestion-results').append(pokemonHolder);
                 };
               } else if (elementType === 'fighting') {
-                // Create a copy of fireArray to manipulate.
                 const copiedArray = fightingArray.map(x => x);
-                // RUn this block of code as many times as it takes to go through the copied array.
                 for (let i = 0; i < copiedArray.length; i++) {
-                  // For every object in copiedArray at index[i], if, the object's name is = the selected pokemon's name. Then, do this.
                   if (copiedArray[i].name === current) {
-                    // Save this object's index in the copied array.
                     const selectedIndex = copiedArray.indexOf(copiedArray[i]);
-                    // Remove selected pokemon from copied array.
                     copiedArray.splice(selectedIndex, 1);
                   };
                 };
-                // Loop through this array backwards. 
                 copiedArray.shuffle();
-                // Testing array
-                console.log(copiedArray);
-                // Create Title for suggestion area (REWRITE)
-                
                 $('.liked').append(suggestedPokemon);
-
-                // Run this code 4 times.
                 for (let i = 0; i < 4; i++) {
-                  // Create a div containing the pokemon name and image.
-                  const displayRecImg = `<img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png">`;
-                  const displayRecName = $('<h3>').text(copiedArray[i].name); 
-                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('pokemon-holder').append(displayRecName, displayRecImg);
-                  // const newTestWrap = $('<div>').attr('id', 'newTestWrap').append(displayRec);
-                  // Append the div into the suggestion area.
-                  $('.suggestion-results').append(displayRec);
-                  // REPEAT THIS IF STATEMENT FOR ALL OTHER ELEMENTS. MAKE SURE COPIED ARRAY IS COPYING THE RESPECTIVE ELEMENT'S ARRAY.
+                  const pokemonHolder = `
+                  <div class="pokemon-holder ${elementType}" value="${copiedArray[i].id}">
+                    <h3>${copiedArray[i].name}</h3>
+                    <img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png" alt="A picture of ${copiedArray[i].name}">
+                  </div>
+                  `;
+                  $('.suggestion-results').append(pokemonHolder);
                 };
               } else if (elementType === 'flying') {
-                // Create a copy of fireArray to manipulate.
                 const copiedArray = flyingArray.map(x => x);
-                // RUn this block of code as many times as it takes to go through the copied array.
                 for (let i = 0; i < copiedArray.length; i++) {
-                  // For every object in copiedArray at index[i], if, the object's name is = the selected pokemon's name. Then, do this.
                   if (copiedArray[i].name === current) {
-                    // Save this object's index in the copied array.
                     const selectedIndex = copiedArray.indexOf(copiedArray[i]);
-                    // Remove selected pokemon from copied array.
                     copiedArray.splice(selectedIndex, 1);
                   };
                 };
-                // Loop through this array backwards. 
                 copiedArray.shuffle();
-                // Testing array
-                console.log(copiedArray);
-                // Create Title for suggestion area (REWRITE)
-                
                 $('.liked').append(suggestedPokemon);
-
-                // Run this code 4 times.
                 for (let i = 0; i < 4; i++) {
-                  // Create a div containing the pokemon name and image.
-                  const displayRecImg = `<img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png">`;
-                  const displayRecName = $('<h3>').text(copiedArray[i].name); 
-                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('pokemon-holder').append(displayRecName, displayRecImg);
-                  // const newTestWrap = $('<div>').attr('id', 'newTestWrap').append(displayRec);
-                  // Append the div into the suggestion area.
-                  $('.suggestion-results').append(displayRec);
-                  // REPEAT THIS IF STATEMENT FOR ALL OTHER ELEMENTS. MAKE SURE COPIED ARRAY IS COPYING THE RESPECTIVE ELEMENT'S ARRAY.
+                  const pokemonHolder = `
+                  <div class="pokemon-holder ${elementType}" value="${copiedArray[i].id}">
+                    <h3>${copiedArray[i].name}</h3>
+                    <img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png" alt="A picture of ${copiedArray[i].name}">
+                  </div>
+                  `;
+                  $('.suggestion-results').append(pokemonHolder);
                 };
               } else if (elementType === 'psychic') {
-                // Create a copy of fireArray to manipulate.
                 const copiedArray = psychicArray.map(x => x);
-                // RUn this block of code as many times as it takes to go through the copied array.
                 for (let i = 0; i < copiedArray.length; i++) {
-                  // For every object in copiedArray at index[i], if, the object's name is = the selected pokemon's name. Then, do this.
                   if (copiedArray[i].name === current) {
-                    // Save this object's index in the copied array.
                     const selectedIndex = copiedArray.indexOf(copiedArray[i]);
-                    // Remove selected pokemon from copied array.
                     copiedArray.splice(selectedIndex, 1);
                   };
                 };
-                // Loop through this array backwards. 
                 copiedArray.shuffle();
-                // Testing array
-                console.log(copiedArray);
-                // Create Title for suggestion area (REWRITE)
-                
                 $('.liked').append(suggestedPokemon);
-
-                // Run this code 4 times.
                 for (let i = 0; i < 4; i++) {
-                  // Create a div containing the pokemon name and image.
-                  const displayRecImg = `<img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png">`;
-                  const displayRecName = $('<h3>').text(copiedArray[i].name); 
-                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('pokemon-holder').append(displayRecName, displayRecImg);
-                  // const newTestWrap = $('<div>').attr('id', 'newTestWrap').append(displayRec);
-                  // Append the div into the suggestion area.
-                  $('.suggestion-results').append(displayRec);
-                  // REPEAT THIS IF STATEMENT FOR ALL OTHER ELEMENTS. MAKE SURE COPIED ARRAY IS COPYING THE RESPECTIVE ELEMENT'S ARRAY.
+                  const pokemonHolder = `
+                  <div class="pokemon-holder ${elementType}" value="${copiedArray[i].id}">
+                    <h3>${copiedArray[i].name}</h3>
+                    <img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png" alt="A picture of ${copiedArray[i].name}">
+                  </div>
+                  `;
+                  $('.suggestion-results').append(pokemonHolder);
                 };
               } else if (elementType === 'ice') {
-                // Create a copy of fireArray to manipulate.
                 const copiedArray = iceArray.map(x => x);
-                // RUn this block of code as many times as it takes to go through the copied array.
                 for (let i = 0; i < copiedArray.length; i++) {
-                  // For every object in copiedArray at index[i], if, the object's name is = the selected pokemon's name. Then, do this.
                   if (copiedArray[i].name === current) {
-                    // Save this object's index in the copied array.
                     const selectedIndex = copiedArray.indexOf(copiedArray[i]);
-                    // Remove selected pokemon from copied array.
                     copiedArray.splice(selectedIndex, 1);
                   };
                 };
-                // Loop through this array backwards. 
                 copiedArray.shuffle();
-                // Testing array
-                console.log(copiedArray);
-                // Create Title for suggestion area (REWRITE)
-                
                 $('.liked').append(suggestedPokemon);
-
-                // Run this code 4 times.
                 for (let i = 0; i < 4; i++) {
-                  // Create a div containing the pokemon name and image.
-                  const displayRecImg = `<img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png">`;
-                  const displayRecName = $('<h3>').text(copiedArray[i].name); 
-                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('pokemon-holder').append(displayRecName, displayRecImg);
-                  // const newTestWrap = $('<div>').attr('id', 'newTestWrap').append(displayRec);
-                  // Append the div into the suggestion area.
-                  $('.suggestion-results').append(displayRec);
-                  // REPEAT THIS IF STATEMENT FOR ALL OTHER ELEMENTS. MAKE SURE COPIED ARRAY IS COPYING THE RESPECTIVE ELEMENT'S ARRAY.
+                  const pokemonHolder = `
+                  <div class="pokemon-holder ${elementType}" value="${copiedArray[i].id}">
+                    <h3>${copiedArray[i].name}</h3>
+                    <img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png" alt="A picture of ${copiedArray[i].name}">
+                  </div>
+                  `;
+                  $('.suggestion-results').append(pokemonHolder);
                 };
               } else if (elementType === 'steel') {
-                // Create a copy of fireArray to manipulate.
                 const copiedArray = steelArray.map(x => x);
-                // RUn this block of code as many times as it takes to go through the copied array.
                 for (let i = 0; i < copiedArray.length; i++) {
-                  // For every object in copiedArray at index[i], if, the object's name is = the selected pokemon's name. Then, do this.
                   if (copiedArray[i].name === current) {
-                    // Save this object's index in the copied array.
                     const selectedIndex = copiedArray.indexOf(copiedArray[i]);
-                    // Remove selected pokemon from copied array.
                     copiedArray.splice(selectedIndex, 1);
                   };
                 };
-                // Loop through this array backwards. 
                 copiedArray.shuffle();
-                // Testing array
-                console.log(copiedArray);
-                // Create Title for suggestion area (REWRITE)
-                
                 $('.liked').append(suggestedPokemon);
-
-                // Run this code 4 times.
                 for (let i = 0; i < 4; i++) {
-                  // Create a div containing the pokemon name and image.
-                  const displayRecImg = `<img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png">`;
-                  const displayRecName = $('<h3>').text(copiedArray[i].name); 
-                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('pokemon-holder').append(displayRecName, displayRecImg);
-                  // const newTestWrap = $('<div>').attr('id', 'newTestWrap').append(displayRec);
-                  // Append the div into the suggestion area.
-                  $('.suggestion-results').append(displayRec);
-                  // REPEAT THIS IF STATEMENT FOR ALL OTHER ELEMENTS. MAKE SURE COPIED ARRAY IS COPYING THE RESPECTIVE ELEMENT'S ARRAY.
+                  const pokemonHolder = `
+                  <div class="pokemon-holder ${elementType}" value="${copiedArray[i].id}">
+                    <h3>${copiedArray[i].name}</h3>
+                    <img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png" alt="A picture of ${copiedArray[i].name}">
+                  </div>
+                  `;
+                  $('.suggestion-results').append(pokemonHolder);
                 };
               } else if (elementType === 'bug') {
-                // Create a copy of fireArray to manipulate.
                 const copiedArray = bugArray.map(x => x);
-                // RUn this block of code as many times as it takes to go through the copied array.
                 for (let i = 0; i < copiedArray.length; i++) {
-                  // For every object in copiedArray at index[i], if, the object's name is = the selected pokemon's name. Then, do this.
                   if (copiedArray[i].name === current) {
-                    // Save this object's index in the copied array.
                     const selectedIndex = copiedArray.indexOf(copiedArray[i]);
-                    // Remove selected pokemon from copied array.
                     copiedArray.splice(selectedIndex, 1);
                   };
                 };
-                // Loop through this array backwards. 
                 copiedArray.shuffle();
-                // Testing array
-                console.log(copiedArray);
-                // Create Title for suggestion area (REWRITE)
-                
                 $('.liked').append(suggestedPokemon);
-
-                // Run this code 4 times.
                 for (let i = 0; i < 4; i++) {
-                  // Create a div containing the pokemon name and image.
-                  const displayRecImg = `<img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png">`;
-                  const displayRecName = $('<h3>').text(copiedArray[i].name); 
-                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('pokemon-holder').append(displayRecName, displayRecImg);
-                  // const newTestWrap = $('<div>').attr('id', 'newTestWrap').append(displayRec);
-                  // Append the div into the suggestion area.
-                  $('.suggestion-results').append(displayRec);
-                  // REPEAT THIS IF STATEMENT FOR ALL OTHER ELEMENTS. MAKE SURE COPIED ARRAY IS COPYING THE RESPECTIVE ELEMENT'S ARRAY.
+                  const pokemonHolder = `
+                  <div class="pokemon-holder ${elementType}" value="${copiedArray[i].id}">
+                    <h3>${copiedArray[i].name}</h3>
+                    <img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png" alt="A picture of ${copiedArray[i].name}">
+                  </div>
+                  `;
+                  $('.suggestion-results').append(pokemonHolder);
                 };
               } else if (elementType === 'ghost') {
-                // Create a copy of fireArray to manipulate.
                 const copiedArray = ghostArray.map(x => x);
-                // RUn this block of code as many times as it takes to go through the copied array.
                 for (let i = 0; i < copiedArray.length; i++) {
-                  // For every object in copiedArray at index[i], if, the object's name is = the selected pokemon's name. Then, do this.
                   if (copiedArray[i].name === current) {
-                    // Save this object's index in the copied array.
                     const selectedIndex = copiedArray.indexOf(copiedArray[i]);
-                    // Remove selected pokemon from copied array.
                     copiedArray.splice(selectedIndex, 1);
                   };
                 };
-                // Loop through this array backwards. 
                 copiedArray.shuffle();
-                // Testing array
-                console.log(copiedArray);
-                // Create Title for suggestion area (REWRITE)
-                
                 $('.liked').append(suggestedPokemon);
-
-                // Run this code 4 times.
                 for (let i = 0; i < 4; i++) {
-                  // Create a div containing the pokemon name and image.
-                  const displayRecImg = `<img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png">`;
-                  const displayRecName = $('<h3>').text(copiedArray[i].name); 
-                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('pokemon-holder').append(displayRecName, displayRecImg);
-                  // const newTestWrap = $('<div>').attr('id', 'newTestWrap').append(displayRec);
-                  // Append the div into the suggestion area.
-                  $('.suggestion-results').append(displayRec);
-                  // REPEAT THIS IF STATEMENT FOR ALL OTHER ELEMENTS. MAKE SURE COPIED ARRAY IS COPYING THE RESPECTIVE ELEMENT'S ARRAY.
+                  const pokemonHolder = `
+                  <div class="pokemon-holder ${elementType}" value="${copiedArray[i].id}">
+                    <h3>${copiedArray[i].name}</h3>
+                    <img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png" alt="A picture of ${copiedArray[i].name}">
+                  </div>
+                  `;
+                  $('.suggestion-results').append(pokemonHolder);
                 };
               } else if (elementType === 'fairy') {
-                // Create a copy of fireArray to manipulate.
                 const copiedArray = fairyArray.map(x => x);
-                // RUn this block of code as many times as it takes to go through the copied array.
                 for (let i = 0; i < copiedArray.length; i++) {
-                  // For every object in copiedArray at index[i], if, the object's name is = the selected pokemon's name. Then, do this.
                   if (copiedArray[i].name === current) {
-                    // Save this object's index in the copied array.
                     const selectedIndex = copiedArray.indexOf(copiedArray[i]);
-                    // Remove selected pokemon from copied array.
                     copiedArray.splice(selectedIndex, 1);
                   };
                 };
-                // Loop through this array backwards. 
                 copiedArray.shuffle();
-                // Testing array
-                console.log(copiedArray);
-                // Create Title for suggestion area (REWRITE)
-
                 $('.liked').append(suggestedPokemon);
-
-                // Run this code 4 times.
                 for (let i = 0; i < 4; i++) {
-                  // Create a div containing the pokemon name and image.
-                  const displayRecImg = `<img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png">`;
-                  const displayRecName = $('<h3>').text(copiedArray[i].name); 
-                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('pokemon-holder').append(displayRecName, displayRecImg);
-                  // const newTestWrap = $('<div>').attr('id', 'newTestWrap').append(displayRec);
-                  // Append the div into the suggestion area.
-                  $('.suggestion-results').append(displayRec);
-                  // REPEAT THIS IF STATEMENT FOR ALL OTHER ELEMENTS. MAKE SURE COPIED ARRAY IS COPYING THE RESPECTIVE ELEMENT'S ARRAY.
+                  const pokemonHolder = `
+                  <div class="pokemon-holder ${elementType}" value="${copiedArray[i].id}">
+                    <h3>${copiedArray[i].name}</h3>
+                    <img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png" alt="A picture of ${copiedArray[i].name}">
+                  </div>
+                  `;
+                  $('.suggestion-results').append(pokemonHolder);
                 };
               } else if (elementType === 'normal') {
-                // Create a copy of fireArray to manipulate.
                 const copiedArray = normalArray.map(x => x);
-                // RUn this block of code as many times as it takes to go through the copied array.
                 for (let i = 0; i < copiedArray.length; i++) {
-                  // For every object in copiedArray at index[i], if, the object's name is = the selected pokemon's name. Then, do this.
                   if (copiedArray[i].name === current) {
-                    // Save this object's index in the copied array.
                     const selectedIndex = copiedArray.indexOf(copiedArray[i]);
-                    // Remove selected pokemon from copied array.
                     copiedArray.splice(selectedIndex, 1);
                   };
                 };
-                // Loop through this array backwards. 
                 copiedArray.shuffle();
-                // Testing array
-                console.log(copiedArray);
-                // Create Title for suggestion area (REWRITE)
-                
                 $('.liked').append(suggestedPokemon);
-
-                // Run this code 4 times.
                 for (let i = 0; i < 4; i++) {
-                  // Create a div containing the pokemon name and image.
-                  const displayRecImg = `<img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png">`;
-                  const displayRecName = $('<h3>').text(copiedArray[i].name); 
-                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('pokemon-holder').append(displayRecName, displayRecImg);
-                  // const newTestWrap = $('<div>').attr('id', 'newTestWrap').append(displayRec);
-                  // Append the div into the suggestion area.
-                  $('.suggestion-results').append(displayRec);
-                  // REPEAT THIS IF STATEMENT FOR ALL OTHER ELEMENTS. MAKE SURE COPIED ARRAY IS COPYING THE RESPECTIVE ELEMENT'S ARRAY.
+                  const pokemonHolder = `
+                  <div class="pokemon-holder ${elementType}" value="${copiedArray[i].id}">
+                    <h3>${copiedArray[i].name}</h3>
+                    <img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png" alt="A picture of ${copiedArray[i].name}">
+                  </div>
+                  `;
+                  $('.suggestion-results').append(pokemonHolder);
+                };
+              } else if (elementType === 'dragon'){
+                const copiedArray = dragonArray.map(x => x);
+                for (let i = 0; i < copiedArray.length; i++) {
+                  if (copiedArray[i].name === current) {
+                    const selectedIndex = copiedArray.indexOf(copiedArray[i]);
+                    copiedArray.splice(selectedIndex, 1);
+                  };
+                };
+                copiedArray.shuffle();
+                $('.liked').append(suggestedPokemon);
+                for (let i = 0; i < 4; i++) {
+                  const pokemonHolder = `
+                  <div class="pokemon-holder ${elementType}" value="${copiedArray[i].id}">
+                    <h3>${copiedArray[i].name}</h3>
+                    <img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png" alt="A picture of ${copiedArray[i].name}">
+                  </div>
+                  `;
+                  $('.suggestion-results').append(pokemonHolder);
+                };
+              } else if (elementType === 'dark'){
+                const copiedArray = darkArray.map(x => x);
+                for (let i = 0; i < copiedArray.length; i++) {
+                  if (copiedArray[i].name === current) {
+                    const selectedIndex = copiedArray.indexOf(copiedArray[i]);
+                    copiedArray.splice(selectedIndex, 1);
+                  };
+                };
+                copiedArray.shuffle();
+                $('.liked').append(suggestedPokemon);
+                for (let i = 0; i < 4; i++) {
+                  const pokemonHolder = `
+                  <div class="pokemon-holder ${elementType}" value="${copiedArray[i].id}">
+                    <h3>${copiedArray[i].name}</h3>
+                    <img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png" alt="A picture of ${copiedArray[i].name}">
+                  </div>
+                  `;
+                  $('.suggestion-results').append(pokemonHolder);
                 };
               };
             };
@@ -741,7 +605,6 @@ const app = {
       })
       //in case one or more promises resolves unsuccessfully
       .fail(function (noPokemon) {
-        console.log(noPokemon);
       })
   },
 };
