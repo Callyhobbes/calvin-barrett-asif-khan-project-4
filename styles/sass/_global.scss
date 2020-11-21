@@ -58,6 +58,7 @@ h3 {
   font-size: 3rem;
   transition: .8s;
   text-align: center;
+  text-transform: capitalize;
   &::before {
     content: "";
     height: 5px;

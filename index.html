@@ -9,47 +9,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@400;600&family=Raleway:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link type="image/png" href="./assets/red-pokeball.png" rel="icon">
   <link rel="stylesheet" href="./styles/style.css">
-  <style>
-    .testSection {
-      display: none;
-      padding: 50px 0;
-    }
-
-    h3 {
-      text-transform: capitalize;
-    }
-
-    #newTest {
-      display: grid;
-      grid-template-rows: 1fr;
-      grid-row-gap: 100px;
-    }
-
-    #suggestionResults {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-gap: 50px;
-    }
-
-    .newTestDiv {
-      display: grid;
-      grid-template-rows: 1fr;
-      grid-row-gap: 25px;
-      text-align: center;
-      border-radius: 25%;
-      padding: 50px;
-      /* background-color: #e84118; */
-      color: black;
-    }
-
-  </style>
+  
 </head>
 <body>
   <header>
     <!--Preloader-->
-      <div class="preloader">
+      <!-- <div class="preloader">
         <img src="./assets/white-pokeball.png" alt="">
-      </div>
+      </div> -->
     <!--Searchbox-->
     <img class="pokemon-logo" src="./assets/pokemon-logo-black.png" alt="pokemon logo">
     <img class="catchphrase" src="./assets/pokemon-catch-black.png" alt="gotta catch em all">
@@ -95,7 +62,9 @@
       </div> -->
     </section>
     <section class="testSection">
-      <div id="newTest" class="wrapper"></div>
+      <div id="newTest" class="liked wrapper">
+        <!--Content of Suggested Pokemon Goes here-->
+      </div>
     </section>
   </body>
 

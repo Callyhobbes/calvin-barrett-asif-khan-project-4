@@ -61,3 +61,58 @@ span {
   text-transform: capitalize;
 }
 
+// Display results section
+
+.recommended-pokemon {
+  display: none;
+  padding: 50px 0;
+}
+
+.newTest {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-row-gap: 100px;
+}
+
+.suggestion-results {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 80px;
+}
+
+.pokemon-holder {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-row-gap: 25px;
+  text-align: center;
+  border-radius: 25%;
+  padding: 50px;
+  position: relative;
+  img {
+    position: relative;
+    z-index: 10;
+  }
+  &::after {
+    content: "";
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $red;
+    opacity: 0;
+    transition: .8s;
+  }
+  h3::before {
+    top: 90px;
+    left: 47%;
+  }
+  &:hover::after,
+  &:focus::after,
+  &:hover h3::before,
+  &:focus h3::before {
+    opacity: 1;
+  }
+}

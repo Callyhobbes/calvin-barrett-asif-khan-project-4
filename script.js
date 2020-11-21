@@ -173,7 +173,7 @@ const app = {
                   <div class="base-stats">
                     <ul>
                       <li><i class="fas fa-id-badge"></i><h3>ID</h3><span>${pokeID}</span></li>
-                      <li><i class="fas fa-fire"></i><h3>Type</h3><span>${elementType}</span></li>
+                      <li><i class="fas fa-fire"></i><h3>Type</h3><span class="type">${elementType}</span></li>
                       <li><i class="fas fa-ruler-combined"></i><h3>Height</h3><span>${height} cm</span></li>
                       <li><i class="fas fa-ruler-combined"></i><h3>Weight</h3><span>${weight} kg</span></li>
                     </ul>
@@ -207,22 +207,19 @@ const app = {
                 };
                 // Loop through this array backwards. 
                 copiedArray.shuffle();
-                // Testing array
-                console.log(copiedArray);
                 // Create Title for suggestion area (REWRITE)
                 const suggestionHeading = $('<h2>').text('Other Pokemon You May Like');
-                const suggestionResults = $('<div>').attr('id', 'suggestionResults');
+                const suggestionResults = $('<div>').attr('class', 'suggestion-results');
                 // Append title to suggestion area.
-                $('#newTest').append(suggestionHeading, suggestionResults);
-                // Run this code 6 times.
-                for (let i = 0; i < 6; i++) {
+                $('.liked').append(suggestionHeading, suggestionResults);
+                // Run this code 4 times.
+                for (let i = 0; i < 4; i++) {
                   // Create a div containing the pokemon name and image.
                   const displayRecImg = `<img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png">`;
                   const displayRecName = $('<h3>').text(copiedArray[i].name); 
-                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('newTestDiv').append(displayRecName, displayRecImg);
-                  // const newTestWrap = $('<div>').attr('id', 'newTestWrap').append(displayRec);
+                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('pokemon-holder').append(displayRecName, displayRecImg);
                   // Append the div into the suggestion area.
-                  $('#suggestionResults').append(displayRec);
+                  $('.suggestion-results').append(displayRec);
                   // REPEAT THIS IF STATEMENT FOR ALL OTHER ELEMENTS. MAKE SURE COPIED ARRAY IS COPYING THE RESPECTIVE ELEMENT'S ARRAY.
                 };
               } else if (elementType === 'water') {
@@ -236,14 +233,14 @@ const app = {
                 copiedArray.shuffle();
                 console.log(copiedArray);
                 const suggestionHeading = $('<h2>').text('Other Pokemon You May Like');
-                const suggestionResults = $('<div>').attr('id', 'suggestionResults');
-                $('#newTest').append(suggestionHeading, suggestionResults);
-                for (let i = 0; i < 6; i++) {
+                const suggestionResults = $('<div>').attr('class', 'suggestion-results');
+                $('.liked').append(suggestionHeading, suggestionResults);
+                for (let i = 0; i < 4; i++) {
                   const displayRecImg = `<img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png">`;
-                  const displayRecName = $('<h3>').text(copiedArray[i].name); 
-                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('newTestDiv').append(displayRecName, displayRecImg);
-                  // const newTestWrap = $('<div>').attr('id', 'newTestWrap').append(displayRec);
-                  $('#suggestionResults').append(displayRec);
+                  const displayRecName = $('<h3>').text(copiedArray[i].name);
+                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('pokemon-holder').append(displayRecName, displayRecImg);
+                  // Append the div into the suggestion area.
+                  $('.suggestion-results').append(displayRec);
                 };
               } else if (elementType === 'grass') {
                 // Create a copy of fireArray to manipulate.
@@ -264,18 +261,17 @@ const app = {
                 console.log(copiedArray);
                 // Create Title for suggestion area (REWRITE)
                 const suggestionHeading = $('<h2>').text('Other Pokemon You May Like');
-                const suggestionResults = $('<div>').attr('id', 'suggestionResults');
+                const suggestionResults = $('<div>').attr('class', 'suggestion-results');
                 // Append title to suggestion area.
-                $('#newTest').append(suggestionHeading, suggestionResults);
-                // Run this code 6 times.
-                for (let i = 0; i < 6; i++) {
+                $('.liked').append(suggestionHeading, suggestionResults);
+                // Run this code 4 times.
+                for (let i = 0; i < 4; i++) {
                   // Create a div containing the pokemon name and image.
                   const displayRecImg = `<img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png">`;
-                  const displayRecName = $('<h3>').text(copiedArray[i].name); 
-                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('newTestDiv').append(displayRecName, displayRecImg);
-                  // const newTestWrap = $('<div>').attr('id', 'newTestWrap').append(displayRec);
+                  const displayRecName = $('<h3>').text(copiedArray[i].name);
+                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('pokemon-holder').append(displayRecName, displayRecImg);
                   // Append the div into the suggestion area.
-                  $('#suggestionResults').append(displayRec);
+                  $('.suggestion-results').append(displayRec);
                   // REPEAT THIS IF STATEMENT FOR ALL OTHER ELEMENTS. MAKE SURE COPIED ARRAY IS COPYING THE RESPECTIVE ELEMENT'S ARRAY.
                 };
               } else if (elementType === 'electric') {
@@ -297,18 +293,18 @@ const app = {
                 console.log(copiedArray);
                 // Create Title for suggestion area (REWRITE)
                 const suggestionHeading = $('<h2>').text('Other Pokemon You May Like');
-                const suggestionResults = $('<div>').attr('id', 'suggestionResults');
+                const suggestionResults = $('<div>').attr('class', 'suggestion-results');
                 // Append title to suggestion area.
-                $('#newTest').append(suggestionHeading, suggestionResults);
-                // Run this code 6 times.
-                for (let i = 0; i < 6; i++) {
+                $('.liked').append(suggestionHeading, suggestionResults);
+                // Run this code 4 times.
+                for (let i = 0; i < 4; i++) {
                   // Create a div containing the pokemon name and image.
                   const displayRecImg = `<img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png">`;
                   const displayRecName = $('<h3>').text(copiedArray[i].name); 
-                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('newTestDiv').append(displayRecName, displayRecImg);
+                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('pokemon-holder').append(displayRecName, displayRecImg);
                   // const newTestWrap = $('<div>').attr('id', 'newTestWrap').append(displayRec);
                   // Append the div into the suggestion area.
-                  $('#suggestionResults').append(displayRec);
+                  $('.suggestion-results').append(displayRec);
                   // REPEAT THIS IF STATEMENT FOR ALL OTHER ELEMENTS. MAKE SURE COPIED ARRAY IS COPYING THE RESPECTIVE ELEMENT'S ARRAY.
                 };
               } else if (elementType === 'poison') {
@@ -330,18 +326,18 @@ const app = {
                 console.log(copiedArray);
                 // Create Title for suggestion area (REWRITE)
                 const suggestionHeading = $('<h2>').text('Other Pokemon You May Like');
-                const suggestionResults = $('<div>').attr('id', 'suggestionResults');
+                const suggestionResults = $('<div>').attr('class', 'suggestion-results');
                 // Append title to suggestion area.
-                $('#newTest').append(suggestionHeading, suggestionResults);
-                // Run this code 6 times.
-                for (let i = 0; i < 6; i++) {
+                $('.liked').append(suggestionHeading, suggestionResults);
+                // Run this code 4 times.
+                for (let i = 0; i < 4; i++) {
                   // Create a div containing the pokemon name and image.
                   const displayRecImg = `<img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png">`;
                   const displayRecName = $('<h3>').text(copiedArray[i].name); 
-                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('newTestDiv').append(displayRecName, displayRecImg);
+                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('pokemon-holder').append(displayRecName, displayRecImg);
                   // const newTestWrap = $('<div>').attr('id', 'newTestWrap').append(displayRec);
                   // Append the div into the suggestion area.
-                  $('#suggestionResults').append(displayRec);
+                  $('.suggestion-results').append(displayRec);
                   // REPEAT THIS IF STATEMENT FOR ALL OTHER ELEMENTS. MAKE SURE COPIED ARRAY IS COPYING THE RESPECTIVE ELEMENT'S ARRAY.
                 };
               } else if (elementType === 'rock') {
@@ -363,18 +359,18 @@ const app = {
                 console.log(copiedArray);
                 // Create Title for suggestion area (REWRITE)
                 const suggestionHeading = $('<h2>').text('Other Pokemon You May Like');
-                const suggestionResults = $('<div>').attr('id', 'suggestionResults');
+                const suggestionResults = $('<div>').attr('class', 'suggestion-results');
                 // Append title to suggestion area.
-                $('#newTest').append(suggestionHeading, suggestionResults);
-                // Run this code 6 times.
-                for (let i = 0; i < 6; i++) {
+                $('.liked').append(suggestionHeading, suggestionResults);
+                // Run this code 4 times.
+                for (let i = 0; i < 4; i++) {
                   // Create a div containing the pokemon name and image.
                   const displayRecImg = `<img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png">`;
                   const displayRecName = $('<h3>').text(copiedArray[i].name); 
-                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('newTestDiv').append(displayRecName, displayRecImg);
+                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('pokemon-holder').append(displayRecName, displayRecImg);
                   // const newTestWrap = $('<div>').attr('id', 'newTestWrap').append(displayRec);
                   // Append the div into the suggestion area.
-                  $('#suggestionResults').append(displayRec);
+                  $('.suggestion-results').append(displayRec);
                   // REPEAT THIS IF STATEMENT FOR ALL OTHER ELEMENTS. MAKE SURE COPIED ARRAY IS COPYING THE RESPECTIVE ELEMENT'S ARRAY.
                 };
               } else if (elementType === 'ground') {
@@ -396,18 +392,18 @@ const app = {
                 console.log(copiedArray);
                 // Create Title for suggestion area (REWRITE)
                 const suggestionHeading = $('<h2>').text('Other Pokemon You May Like');
-                const suggestionResults = $('<div>').attr('id', 'suggestionResults');
+                const suggestionResults = $('<div>').attr('class', 'suggestion-results');
                 // Append title to suggestion area.
-                $('#newTest').append(suggestionHeading, suggestionResults);
-                // Run this code 6 times.
-                for (let i = 0; i < 6; i++) {
+                $('.liked').append(suggestionHeading, suggestionResults);
+                // Run this code 4 times.
+                for (let i = 0; i < 4; i++) {
                   // Create a div containing the pokemon name and image.
                   const displayRecImg = `<img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png">`;
                   const displayRecName = $('<h3>').text(copiedArray[i].name); 
-                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('newTestDiv').append(displayRecName, displayRecImg);
+                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('pokemon-holder').append(displayRecName, displayRecImg);
                   // const newTestWrap = $('<div>').attr('id', 'newTestWrap').append(displayRec);
                   // Append the div into the suggestion area.
-                  $('#suggestionResults').append(displayRec);
+                  $('.suggestion-results').append(displayRec);
                   // REPEAT THIS IF STATEMENT FOR ALL OTHER ELEMENTS. MAKE SURE COPIED ARRAY IS COPYING THE RESPECTIVE ELEMENT'S ARRAY.
                 };
               } else if (elementType === 'fighting') {
@@ -429,18 +425,18 @@ const app = {
                 console.log(copiedArray);
                 // Create Title for suggestion area (REWRITE)
                 const suggestionHeading = $('<h2>').text('Other Pokemon You May Like');
-                const suggestionResults = $('<div>').attr('id', 'suggestionResults');
+                const suggestionResults = $('<div>').attr('class', 'suggestion-results');
                 // Append title to suggestion area.
-                $('#newTest').append(suggestionHeading, suggestionResults);
-                // Run this code 6 times.
-                for (let i = 0; i < 6; i++) {
+                $('.liked').append(suggestionHeading, suggestionResults);
+                // Run this code 4 times.
+                for (let i = 0; i < 4; i++) {
                   // Create a div containing the pokemon name and image.
                   const displayRecImg = `<img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png">`;
                   const displayRecName = $('<h3>').text(copiedArray[i].name); 
-                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('newTestDiv').append(displayRecName, displayRecImg);
+                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('pokemon-holder').append(displayRecName, displayRecImg);
                   // const newTestWrap = $('<div>').attr('id', 'newTestWrap').append(displayRec);
                   // Append the div into the suggestion area.
-                  $('#suggestionResults').append(displayRec);
+                  $('.suggestion-results').append(displayRec);
                   // REPEAT THIS IF STATEMENT FOR ALL OTHER ELEMENTS. MAKE SURE COPIED ARRAY IS COPYING THE RESPECTIVE ELEMENT'S ARRAY.
                 };
               } else if (elementType === 'flying') {
@@ -462,18 +458,18 @@ const app = {
                 console.log(copiedArray);
                 // Create Title for suggestion area (REWRITE)
                 const suggestionHeading = $('<h2>').text('Other Pokemon You May Like');
-                const suggestionResults = $('<div>').attr('id', 'suggestionResults');
+                const suggestionResults = $('<div>').attr('class', 'suggestion-results');
                 // Append title to suggestion area.
-                $('#newTest').append(suggestionHeading, suggestionResults);
-                // Run this code 6 times.
-                for (let i = 0; i < 6; i++) {
+                $('.liked').append(suggestionHeading, suggestionResults);
+                // Run this code 4 times.
+                for (let i = 0; i < 4; i++) {
                   // Create a div containing the pokemon name and image.
                   const displayRecImg = `<img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png">`;
                   const displayRecName = $('<h3>').text(copiedArray[i].name); 
-                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('newTestDiv').append(displayRecName, displayRecImg);
+                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('pokemon-holder').append(displayRecName, displayRecImg);
                   // const newTestWrap = $('<div>').attr('id', 'newTestWrap').append(displayRec);
                   // Append the div into the suggestion area.
-                  $('#suggestionResults').append(displayRec);
+                  $('.suggestion-results').append(displayRec);
                   // REPEAT THIS IF STATEMENT FOR ALL OTHER ELEMENTS. MAKE SURE COPIED ARRAY IS COPYING THE RESPECTIVE ELEMENT'S ARRAY.
                 };
               } else if (elementType === 'psychic') {
@@ -495,18 +491,18 @@ const app = {
                 console.log(copiedArray);
                 // Create Title for suggestion area (REWRITE)
                 const suggestionHeading = $('<h2>').text('Other Pokemon You May Like');
-                const suggestionResults = $('<div>').attr('id', 'suggestionResults');
+                const suggestionResults = $('<div>').attr('class', 'suggestion-results');
                 // Append title to suggestion area.
-                $('#newTest').append(suggestionHeading, suggestionResults);
-                // Run this code 6 times.
-                for (let i = 0; i < 6; i++) {
+                $('.liked').append(suggestionHeading, suggestionResults);
+                // Run this code 4 times.
+                for (let i = 0; i < 4; i++) {
                   // Create a div containing the pokemon name and image.
                   const displayRecImg = `<img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png">`;
                   const displayRecName = $('<h3>').text(copiedArray[i].name); 
-                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('newTestDiv').append(displayRecName, displayRecImg);
+                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('pokemon-holder').append(displayRecName, displayRecImg);
                   // const newTestWrap = $('<div>').attr('id', 'newTestWrap').append(displayRec);
                   // Append the div into the suggestion area.
-                  $('#suggestionResults').append(displayRec);
+                  $('.suggestion-results').append(displayRec);
                   // REPEAT THIS IF STATEMENT FOR ALL OTHER ELEMENTS. MAKE SURE COPIED ARRAY IS COPYING THE RESPECTIVE ELEMENT'S ARRAY.
                 };
               } else if (elementType === 'ice') {
@@ -528,18 +524,18 @@ const app = {
                 console.log(copiedArray);
                 // Create Title for suggestion area (REWRITE)
                 const suggestionHeading = $('<h2>').text('Other Pokemon You May Like');
-                const suggestionResults = $('<div>').attr('id', 'suggestionResults');
+                const suggestionResults = $('<div>').attr('class', 'suggestion-results');
                 // Append title to suggestion area.
-                $('#newTest').append(suggestionHeading, suggestionResults);
-                // Run this code 6 times.
-                for (let i = 0; i < 6; i++) {
+                $('.liked').append(suggestionHeading, suggestionResults);
+                // Run this code 4 times.
+                for (let i = 0; i < 4; i++) {
                   // Create a div containing the pokemon name and image.
                   const displayRecImg = `<img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png">`;
                   const displayRecName = $('<h3>').text(copiedArray[i].name); 
-                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('newTestDiv').append(displayRecName, displayRecImg);
+                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('pokemon-holder').append(displayRecName, displayRecImg);
                   // const newTestWrap = $('<div>').attr('id', 'newTestWrap').append(displayRec);
                   // Append the div into the suggestion area.
-                  $('#suggestionResults').append(displayRec);
+                  $('.suggestion-results').append(displayRec);
                   // REPEAT THIS IF STATEMENT FOR ALL OTHER ELEMENTS. MAKE SURE COPIED ARRAY IS COPYING THE RESPECTIVE ELEMENT'S ARRAY.
                 };
               } else if (elementType === 'steel') {
@@ -561,18 +557,18 @@ const app = {
                 console.log(copiedArray);
                 // Create Title for suggestion area (REWRITE)
                 const suggestionHeading = $('<h2>').text('Other Pokemon You May Like');
-                const suggestionResults = $('<div>').attr('id', 'suggestionResults');
+                const suggestionResults = $('<div>').attr('class', 'suggestion-results');
                 // Append title to suggestion area.
-                $('#newTest').append(suggestionHeading, suggestionResults);
-                // Run this code 6 times.
-                for (let i = 0; i < 6; i++) {
+                $('.liked').append(suggestionHeading, suggestionResults);
+                // Run this code 4 times.
+                for (let i = 0; i < 4; i++) {
                   // Create a div containing the pokemon name and image.
                   const displayRecImg = `<img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png">`;
                   const displayRecName = $('<h3>').text(copiedArray[i].name); 
-                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('newTestDiv').append(displayRecName, displayRecImg);
+                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('pokemon-holder').append(displayRecName, displayRecImg);
                   // const newTestWrap = $('<div>').attr('id', 'newTestWrap').append(displayRec);
                   // Append the div into the suggestion area.
-                  $('#suggestionResults').append(displayRec);
+                  $('.suggestion-results').append(displayRec);
                   // REPEAT THIS IF STATEMENT FOR ALL OTHER ELEMENTS. MAKE SURE COPIED ARRAY IS COPYING THE RESPECTIVE ELEMENT'S ARRAY.
                 };
               } else if (elementType === 'bug') {
@@ -594,18 +590,18 @@ const app = {
                 console.log(copiedArray);
                 // Create Title for suggestion area (REWRITE)
                 const suggestionHeading = $('<h2>').text('Other Pokemon You May Like');
-                const suggestionResults = $('<div>').attr('id', 'suggestionResults');
+                const suggestionResults = $('<div>').attr('class', 'suggestion-results');
                 // Append title to suggestion area.
-                $('#newTest').append(suggestionHeading, suggestionResults);
-                // Run this code 6 times.
-                for (let i = 0; i < 6; i++) {
+                $('.liked').append(suggestionHeading, suggestionResults);
+                // Run this code 4 times.
+                for (let i = 0; i < 4; i++) {
                   // Create a div containing the pokemon name and image.
                   const displayRecImg = `<img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png">`;
                   const displayRecName = $('<h3>').text(copiedArray[i].name); 
-                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('newTestDiv').append(displayRecName, displayRecImg);
+                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('pokemon-holder').append(displayRecName, displayRecImg);
                   // const newTestWrap = $('<div>').attr('id', 'newTestWrap').append(displayRec);
                   // Append the div into the suggestion area.
-                  $('#suggestionResults').append(displayRec);
+                  $('.suggestion-results').append(displayRec);
                   // REPEAT THIS IF STATEMENT FOR ALL OTHER ELEMENTS. MAKE SURE COPIED ARRAY IS COPYING THE RESPECTIVE ELEMENT'S ARRAY.
                 };
               } else if (elementType === 'ghost') {
@@ -627,18 +623,18 @@ const app = {
                 console.log(copiedArray);
                 // Create Title for suggestion area (REWRITE)
                 const suggestionHeading = $('<h2>').text('Other Pokemon You May Like');
-                const suggestionResults = $('<div>').attr('id', 'suggestionResults');
+                const suggestionResults = $('<div>').attr('class', 'suggestion-results');
                 // Append title to suggestion area.
-                $('#newTest').append(suggestionHeading, suggestionResults);
-                // Run this code 6 times.
-                for (let i = 0; i < 6; i++) {
+                $('.liked').append(suggestionHeading, suggestionResults);
+                // Run this code 4 times.
+                for (let i = 0; i < 4; i++) {
                   // Create a div containing the pokemon name and image.
                   const displayRecImg = `<img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png">`;
                   const displayRecName = $('<h3>').text(copiedArray[i].name); 
-                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('newTestDiv').append(displayRecName, displayRecImg);
+                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('pokemon-holder').append(displayRecName, displayRecImg);
                   // const newTestWrap = $('<div>').attr('id', 'newTestWrap').append(displayRec);
                   // Append the div into the suggestion area.
-                  $('#suggestionResults').append(displayRec);
+                  $('.suggestion-results').append(displayRec);
                   // REPEAT THIS IF STATEMENT FOR ALL OTHER ELEMENTS. MAKE SURE COPIED ARRAY IS COPYING THE RESPECTIVE ELEMENT'S ARRAY.
                 };
               } else if (elementType === 'fairy') {
@@ -660,18 +656,18 @@ const app = {
                 console.log(copiedArray);
                 // Create Title for suggestion area (REWRITE)
                 const suggestionHeading = $('<h2>').text('Other Pokemon You May Like');
-                const suggestionResults = $('<div>').attr('id', 'suggestionResults');
+                const suggestionResults = $('<div>').attr('class', 'suggestion-results');
                 // Append title to suggestion area.
-                $('#newTest').append(suggestionHeading, suggestionResults);
-                // Run this code 6 times.
-                for (let i = 0; i < 6; i++) {
+                $('.liked').append(suggestionHeading, suggestionResults);
+                // Run this code 4 times.
+                for (let i = 0; i < 4; i++) {
                   // Create a div containing the pokemon name and image.
                   const displayRecImg = `<img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png">`;
                   const displayRecName = $('<h3>').text(copiedArray[i].name); 
-                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('newTestDiv').append(displayRecName, displayRecImg);
+                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('pokemon-holder').append(displayRecName, displayRecImg);
                   // const newTestWrap = $('<div>').attr('id', 'newTestWrap').append(displayRec);
                   // Append the div into the suggestion area.
-                  $('#suggestionResults').append(displayRec);
+                  $('.suggestion-results').append(displayRec);
                   // REPEAT THIS IF STATEMENT FOR ALL OTHER ELEMENTS. MAKE SURE COPIED ARRAY IS COPYING THE RESPECTIVE ELEMENT'S ARRAY.
                 };
               } else if (elementType === 'normal') {
@@ -693,18 +689,18 @@ const app = {
                 console.log(copiedArray);
                 // Create Title for suggestion area (REWRITE)
                 const suggestionHeading = $('<h2>').text('Other Pokemon You May Like');
-                const suggestionResults = $('<div>').attr('id', 'suggestionResults');
+                const suggestionResults = $('<div>').attr('class', 'suggestion-results');
                 // Append title to suggestion area.
-                $('#newTest').append(suggestionHeading, suggestionResults);
-                // Run this code 6 times.
-                for (let i = 0; i < 6; i++) {
+                $('.liked').append(suggestionHeading, suggestionResults);
+                // Run this code 4 times.
+                for (let i = 0; i < 4; i++) {
                   // Create a div containing the pokemon name and image.
                   const displayRecImg = `<img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png">`;
                   const displayRecName = $('<h3>').text(copiedArray[i].name); 
-                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('newTestDiv').append(displayRecName, displayRecImg);
+                  const displayRec = $('<div>').attr('value', copiedArray[i].id).addClass('pokemon-holder').append(displayRecName, displayRecImg);
                   // const newTestWrap = $('<div>').attr('id', 'newTestWrap').append(displayRec);
                   // Append the div into the suggestion area.
-                  $('#suggestionResults').append(displayRec);
+                  $('.suggestion-results').append(displayRec);
                   // REPEAT THIS IF STATEMENT FOR ALL OTHER ELEMENTS. MAKE SURE COPIED ARRAY IS COPYING THE RESPECTIVE ELEMENT'S ARRAY.
                 };
               };
