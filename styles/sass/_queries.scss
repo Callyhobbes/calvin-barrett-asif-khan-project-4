@@ -1,0 +1,69 @@
+@media (max-width: 1200px) {
+  .pokemon-holder::after {
+    height: 250px;
+    width: 250px;
+    top: 60%;
+  }
+}
+
+@media (max-width: 1050px) {
+  // stack selected pokemon and information
+  .display-results {
+    flex-direction: column;
+    min-height: 600px;
+  }
+
+  .poke-image {
+    padding-top: 50px;
+    width: 220px;
+  }
+
+  .pokemon-info {
+    padding: 40px 0;
+  }
+}
+
+@media (max-width: 800px) {
+  .suggestion-results {
+    grid-template-columns: 1fr;
+    grid-gap: 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .pokemon-logo {
+    width: 300px;
+    top: 100px;
+  }
+
+  .catchphrase {
+    width: 250px;
+    top: 180px;
+  }
+
+  h2 {
+    font-size: 4rem;
+  }
+
+  h3 {
+    font-size: 2.5rem;
+  }
+
+  .pokemon-holder {
+    padding: 40px;
+    &::after {
+      height: 200px;
+      width: 200px;
+      top: 60%;
+    }
+    h3::before {
+    top: 70px;
+    }
+  }
+}
+
+@media (max-width: 360px) {
+  i {
+    visibility: hidden;
+  }
+}

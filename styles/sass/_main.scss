@@ -116,6 +116,9 @@ span {
   border-radius: 25%;
   padding: 50px;
   position: relative;
+  img {
+    padding-top: 10px;
+  }
   &::after {
     content: "";
     height: 300px;
@@ -130,7 +133,8 @@ span {
   }
   h3::before {
     top: 90px;
-    left: 47%;
+    left: 50%;
+    transform: translateX(-50%);
   }
   &:hover::after,
   &:focus::after,

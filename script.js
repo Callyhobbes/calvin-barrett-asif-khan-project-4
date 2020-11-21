@@ -9,6 +9,7 @@ Array.prototype.shuffle = function() {
   };
   return this;
 }
+
 // Preload Animation Start
 // Time-out for preload of pokeball icon bouncing
 setTimeout(function () {
@@ -25,11 +26,17 @@ $('.picked-pokemon').on('click', 'a', function () {
   }, 1500);
 });
 
-$('.liked').on('click', 'a', function () {
-  // empty the results
+// Empty All Sections
+function emptyAll() {
   $('.liked').empty();
   $('.picked-pokemon').empty();
   $('footer').empty();
+}
+
+
+$('.liked').on('click', 'a', function () {
+  // empty the results
+  emptyAll();
   // clear the form's checked inputs
   $('html').trigger('reset');
   $('.liked').hide();
@@ -113,63 +120,62 @@ const app = {
               };
             };
             switch(object.type.name) {
-                  case 'fire': 
-                    fireArray.push(factoryPokemon(name, id));
-                    break;
-                  case 'water': 
-                    waterArray.push(factoryPokemon(name, id));
-                    break;
-                  case 'grass': 
-                    grassArray.push(factoryPokemon(name, id));
-                    break;
-                  case 'flying': 
-                    flyingArray.push(factoryPokemon(name, id));
-                    break;
-                  case 'poison': 
-                    poisonArray.push(factoryPokemon(name, id));
-                    break;
-                  case 'fighting': 
-                    fightingArray.push(factoryPokemon(name, id));
-                    break;
-                  case 'ice': 
-                    iceArray.push(factoryPokemon(name, id));
-                    break;
-                  case 'electric': 
-                    electricArray.push(factoryPokemon(name, id));
-                    break;
-                  case 'psychic': 
-                    psychicArray.push(factoryPokemon(name, id));
-                    break;
-                  case 'ground': 
-                    groundArray.push(factoryPokemon(name, id));
-                    break;
-                  case 'rock': 
-                    rockArray.push(factoryPokemon(name, id));
-                    break;
-                  case 'ghost': 
-                    ghostArray.push(factoryPokemon(name, id));
-                    break;
-                  case 'fairy': 
-                    fairyArray.push(factoryPokemon(name, id));
-                    break;
-                  case 'normal': 
-                    normalArray.push(factoryPokemon(name, id));
-                    break;
-                  case 'bug': 
-                    bugArray.push(factoryPokemon(name, id));
-                    break;
-                  case 'steel': 
-                    steelArray.push(factoryPokemon(name, id));
-                    break;
-                  case 'dark': 
-                    darkArray.push(factoryPokemon(name, id));
-                    break;
-                  case 'dragon': 
-                    dragonArray.push(factoryPokemon(name, id));
-                    break;
-                }
+              case 'fire': 
+                fireArray.push(factoryPokemon(name, id));
+                break;
+              case 'water': 
+                waterArray.push(factoryPokemon(name, id));
+                break;
+              case 'grass': 
+                grassArray.push(factoryPokemon(name, id));
+                break;
+              case 'flying': 
+                flyingArray.push(factoryPokemon(name, id));
+                break;
+              case 'poison': 
+                poisonArray.push(factoryPokemon(name, id));
+                break;
+              case 'fighting': 
+                fightingArray.push(factoryPokemon(name, id));
+                break;
+              case 'ice': 
+                iceArray.push(factoryPokemon(name, id));
+                break;
+              case 'electric': 
+                electricArray.push(factoryPokemon(name, id));
+                break;
+              case 'psychic': 
+                psychicArray.push(factoryPokemon(name, id));
+                break;
+              case 'ground': 
+                groundArray.push(factoryPokemon(name, id));
+                break;
+              case 'rock': 
+                rockArray.push(factoryPokemon(name, id));
+                break;
+              case 'ghost': 
+                ghostArray.push(factoryPokemon(name, id));
+                break;
+              case 'fairy': 
+                fairyArray.push(factoryPokemon(name, id));
+                break;
+              case 'normal': 
+                normalArray.push(factoryPokemon(name, id));
+                break;
+              case 'bug': 
+                bugArray.push(factoryPokemon(name, id));
+                break;
+              case 'steel': 
+                steelArray.push(factoryPokemon(name, id));
+                break;
+              case 'dark': 
+                darkArray.push(factoryPokemon(name, id));
+                break;
+              case 'dragon': 
+                dragonArray.push(factoryPokemon(name, id));
+                break;
+            }
           })
-          
         });
         // #pokeball is the button element that comes after the input element.
         // When the button is clicked...
@@ -182,8 +188,7 @@ const app = {
           $(`html,body`).animate({
             scrollTop: $('.picked-pokemon').offset().top
           }, 1500);
-          $('.picked-pokemon').empty();
-          $('.liked').empty();
+          emptyAll();
           let current = $('#input1').val();
           // For every object in relevantPokemonInfo....
           relevantPokemonInfo.forEach(function (item) {
@@ -212,12 +217,12 @@ const app = {
                       <li><i class="fas fa-id-badge"></i><h3>ID</h3><span>${pokeID}</span></li>
                       <li><i class="fas fa-fire"></i><h3>Type</h3><span class="type">${elementType}</span></li>
                       <li><i class="fas fa-ruler-combined"></i><h3>Height</h3><span>${height} cm</span></li>
-                      <li><i class="fas fa-ruler-combined"></i><h3>Weight</h3><span>${weight} kg</span></li>
+                      <li><i class="fas fa-weight-hanging"></i><h3>Weight</h3><span>${weight} kg</span></li>
                     </ul>
                   </div>
                   <div class="battle-stats">
                     <ul>
-                      <li><i class="fas fa-heart"></i><h3>HP</h3><span>${HP}</span></li>
+                      <li><i class="fas fa-heart"></i><h3>Health</h3><span>${HP}</span></li>
                       <li><i class="fas fa-meteor"></i><h3>Attack</h3><span>${attack}</span></li>
                       <li><i class="fas fa-shield-alt"></i><h3>Defense</h3><span>${defense}</span></li>
                       <li><i class="fas fa-wind"></i><h3>Speed</h3><span>${speed}</span></li>
@@ -225,7 +230,7 @@ const app = {
                   </div>
                 </div>
               </div>
-              <div class="next-section wrapper">
+              <div class="next-section">
                 <a href="#because-you-like">Find More</a>
               </div>
               `;
@@ -237,8 +242,8 @@ const app = {
               const suggestedPokemon = `
                 <h2>Other Pokemon You May Like</h2>
                 <div class="suggestion-results"></div>
-                <div class="next-section wrapper">
-                  <a id="secondButton" href="#start">Back To Top</a>
+                <div class="next-section">
+                  <a id="secondButton" href="#start">Try Again</a>
                 </div>
                 `;
               
@@ -605,6 +610,10 @@ const app = {
       })
       //in case one or more promises resolves unsuccessfully
       .fail(function (noPokemon) {
+        const nothingFound =`
+        Sorry, it looks like the pokeball was empty. Try again!
+        `;
+        $('.error').text(nothingFound);
       })
   },
 };
