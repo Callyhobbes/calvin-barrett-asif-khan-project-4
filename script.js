@@ -26,7 +26,7 @@ $('.picked-pokemon').on('click', 'a', function () {
   }, 1500);
 });
 
-// Empty All Sections
+// Empty All Sections Function
 function emptyAll() {
   $('.liked').empty();
   $('.picked-pokemon').empty();
@@ -107,9 +107,9 @@ const app = {
           // For every object in the relevantPokemonInfo array, append the option element that was created.
           // For each object in the types endpoint, create a factory function that returns a pokemon with properties we want to use for the suggestions box.
           const { name, types, id} = y;
-          const test = $('<option>').attr('value', name).text(name);
-          const testList = $('#testList');
-          testList.append(test);
+          const eachPokemon = $('<option>').attr('value', name).text(name);
+          const pokeList = $('#poke-list');
+          pokeList.append(eachPokemon);
           types.forEach(object => {
             // Factory function
             const factoryPokemon = (name, id) => {
@@ -189,7 +189,7 @@ const app = {
             scrollTop: $('.picked-pokemon').offset().top
           }, 1500);
           emptyAll();
-          let current = $('#input1').val();
+          let current = $('#search-text').val();
           // For every object in relevantPokemonInfo....
           relevantPokemonInfo.forEach(function (item) {
             // If, that object's name property is the same as the current input the user selected then create variables based on the object's properties.
