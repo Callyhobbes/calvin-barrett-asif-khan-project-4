@@ -67,8 +67,7 @@ h3 {
     width: 40px;
     background-color: $red;
     position: absolute;
-    top: 37px;
-    left: 35%;
+    transform: translateX(-50%);
     transition: .8s;
     opacity: 0;
   }

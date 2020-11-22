@@ -376,8 +376,8 @@ h3::before {
   width: 40px;
   background-color: #e84118;
   position: absolute;
-  top: 37px;
-  left: 35%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
   -webkit-transition: .8s;
   transition: .8s;
   opacity: 0;
@@ -482,7 +482,7 @@ header {
 
 .pokemon-logo {
   width: 400px;
-  position: relative;
+  position: absolute;
   top: 100px;
 }
 
@@ -560,7 +560,7 @@ header {
 .arrow {
   text-align: center;
   position: absolute;
-  bottom: 15%;
+  bottom: 10%;
   left: 50%;
 }
 
@@ -622,6 +622,11 @@ section {
       -ms-flex-align: center;
           align-items: center;
   min-height: 600px;
+}
+
+.display-results h3::before {
+  top: 40px;
+  left: 50%;
 }
 
 .poke-image {
@@ -778,8 +783,6 @@ span {
 .pokemon-holder h3::before {
   top: 90px;
   left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
 }
 
 .pokemon-holder:hover::after, .pokemon-holder:focus::after,
@@ -861,6 +864,9 @@ footer a:hover, footer a:focus {
   }
   h3 {
     font-size: 2.5rem;
+  }
+  .display-results h3::before {
+    top: 30px;
   }
   .pokemon-holder {
     padding: 40px;

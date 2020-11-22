@@ -8,6 +8,10 @@ section {
   justify-content: space-evenly;
   align-items: center;
   min-height: 600px;
+  h3::before {
+    top: 40px;
+    left: 50%;
+  }
 }
 
 .poke-image {
@@ -134,7 +138,6 @@ span {
   h3::before {
     top: 90px;
     left: 50%;
-    transform: translateX(-50%);
   }
   &:hover::after,
   &:focus::after,
