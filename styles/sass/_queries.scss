@@ -31,6 +31,22 @@
   }
 }
 
+@media (max-width: 600px) {
+  .search-box {
+    &:hover > .search-text,
+    &:focus > .search-text {
+      width: 250px;
+    }
+  }
+
+  .search-text {
+    font-size: 3rem;
+    &:focus-within {
+      width: 250px;
+    }
+  }
+}
+
 @media (max-width: 500px) {
   .pokemon-logo {
     width: 300px;
@@ -76,7 +92,21 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 370px) {
+  .search-box {
+    &:hover > .search-text,
+    &:focus > .search-text {
+      width: 150px;
+    }
+  }
+
+  .search-text {
+    font-size: 2.2rem;
+    &:focus-within {
+      width: 150px;
+    }
+  }
+  
   i {
     visibility: hidden;
   }

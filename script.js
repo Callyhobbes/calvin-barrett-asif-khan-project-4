@@ -1,7 +1,7 @@
 // Hitting the fisher yates shuffle babyyyyyy.
-Array.prototype.shuffle = function() {
+Array.prototype.shuffle = function () {
   let i = this.length;
-  while(--i > 0) {
+  while (--i > 0) {
     let j = Math.floor(Math.random() * (1 + i));
     let temp = this[j];
     this[j] = this[i];
@@ -26,14 +26,6 @@ $('.picked-pokemon').on('click', 'a', function () {
   }, 1500);
 });
 
-// Empty All Sections Function
-function emptyAll() {
-  $('.liked').empty();
-  $('.picked-pokemon').empty();
-  $('footer').empty();
-}
-
-
 $('.liked').on('click', 'a', function () {
   // empty the results
   emptyAll();
@@ -46,6 +38,13 @@ $('.liked').on('click', 'a', function () {
   }, 1500);
 });
 // Toggles for results END.
+
+// Empty All Sections Function
+function emptyAll() {
+  $('.liked').empty();
+  $('.picked-pokemon').empty();
+  $('footer').empty();
+}
 
 // Declaring application object
 const app = {
@@ -180,9 +179,6 @@ const app = {
         // #pokeball is the button element that comes after the input element.
         // When the button is clicked...
         $('#pokeball').on('click', function (e) {
-          // Don't reset the input field.
-          //smooth scroll to the picked pokemon section.
-          // Then empty the area you want to append the pokemon to so that only 1 pokemon is shown at a time.
           // Store the current value of the input element.
           e.preventDefault();       
           $(`html,body`).animate({

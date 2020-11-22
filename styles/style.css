@@ -391,7 +391,17 @@ button {
 header {
   position: relative;
   height: 100vh;
+  min-height: 700px;
   background-color: #e84118;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .preloader {
@@ -495,11 +505,6 @@ header {
 .search-box {
   -webkit-box-sizing: content-box;
           box-sizing: content-box;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
   background-color: #2f3640;
   height: 80px;
   border-radius: 80px;
@@ -850,6 +855,19 @@ footer a:hover, footer a:focus {
   }
 }
 
+@media (max-width: 600px) {
+  .search-box:hover > .search-text,
+  .search-box:focus > .search-text {
+    width: 250px;
+  }
+  .search-text {
+    font-size: 3rem;
+  }
+  .search-text:focus-within {
+    width: 250px;
+  }
+}
+
 @media (max-width: 500px) {
   .pokemon-logo {
     width: 300px;
@@ -887,7 +905,17 @@ footer a:hover, footer a:focus {
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 370px) {
+  .search-box:hover > .search-text,
+  .search-box:focus > .search-text {
+    width: 150px;
+  }
+  .search-text {
+    font-size: 2.2rem;
+  }
+  .search-text:focus-within {
+    width: 150px;
+  }
   i {
     visibility: hidden;
   }
