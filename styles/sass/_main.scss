@@ -1,3 +1,4 @@
+// Selected Pokemon Section Styling
 section {
   background-color: $white;
 }
@@ -51,11 +52,12 @@ ul {
   }
 }
 
+// Icons that appear to the left of each title
 i {
+  @include fontStyling(2.5rem);
   position: absolute;
   top: 5px;
   left: -40px;
-  @include fontStyling(2.5rem);
 }
 
 .fas {
@@ -64,6 +66,7 @@ i {
   transition: .8s;
 }
 
+// on hover animations
 li:hover .fas,
 li:focus .fas {
   opacity: 1;
@@ -75,10 +78,10 @@ li:focus h3::before {
 }
 
 span {
+  @include fontStyling(2.5rem);
   display: block;
   padding: 20px 10px;
   text-align: center;
-  @include fontStyling(2.5rem);
 }
 
 .type {
@@ -100,8 +103,8 @@ span {
     margin-bottom: 60px;
   }
 }
-// Display results section
 
+// Other Pokemon You May Lik Results Styling
 .liked {
   display: none;
 }

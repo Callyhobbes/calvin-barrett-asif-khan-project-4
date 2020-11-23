@@ -1,7 +1,6 @@
 // Color Variables
 $white: #fff;
 $red: #e84118;
-$yellow: #ffcc00;
 $black: #2f3640;
 
 // Font Style
@@ -10,7 +9,7 @@ $black: #2f3640;
   font-weight: $weightValue;
 }
 
-// Pokemon Types
+// Pokemon Types Background Hover Coloring
 .fire::after {background-color: #e84118;}
 .grass::after {background-color: #92c88a;}
 .water::after {background-color: #97b3e6;}

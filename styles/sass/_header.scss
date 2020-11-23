@@ -6,8 +6,11 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
+
+// bouncing pokemon animation
 .preloader {
   height: 100vh;
   width: 100vw;
@@ -50,6 +53,7 @@ header {
   }
 }
 
+// pokemon logo and catchphrase styling
 .pokemon-logo,
 .catchphrase {
   left: 50%;
@@ -68,6 +72,7 @@ header {
   top: 220px;
 }
 
+// expanding searchbox styling
 .search-box {
   box-sizing: content-box;
   background-color: $black;
@@ -115,6 +120,8 @@ header {
   }
 }
 
+
+// arrow animation styling
 .arrow {
   text-align: center;
   position: absolute;
@@ -145,5 +152,14 @@ header {
   }
   25% {
     opacity: 1;
+  }
+}
+
+// if promise fails, this will print
+.error {
+  p {
+    @include fontStyling(3rem);
+    color: $white;
+    padding: 40px 0;
   }
 }

@@ -37,8 +37,8 @@ h1 {
 }
 
 h2 {
-  font-family: 'Raleway', sans-serif;
   @include fontStyling(5rem, 700);
+  font-family: 'Raleway', sans-serif;
   text-align: center;
   padding: 20px 0;
   text-transform: capitalize;

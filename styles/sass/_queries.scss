@@ -1,4 +1,5 @@
 @media (max-width: 1200px) {
+  // Change the size of the on hover circle of each pokemon type in the you may like section
   .pokemon-holder::after {
     height: 250px;
     width: 250px;
@@ -7,7 +8,6 @@
 }
 
 @media (max-width: 1050px) {
-
   // stack selected pokemon and information
   .display-results {
     flex-direction: column;
@@ -25,6 +25,7 @@
 }
 
 @media (max-width: 800px) {
+  // stack column of pokemon you may like section
   .suggestion-results {
     grid-template-columns: 1fr;
     grid-gap: 0;
@@ -32,6 +33,7 @@
 }
 
 @media (max-width: 600px) {
+  // adjust the length of the main search box
   .search-box {
     &:hover > .search-text,
     &:focus > .search-text {
@@ -48,6 +50,7 @@
 }
 
 @media (max-width: 500px) {
+  // adjust pokemon logo and catchphrase sizing
   .pokemon-logo {
     width: 300px;
     top: 100px;
@@ -74,6 +77,7 @@
     font-size: 2.2rem;
   }
 
+  // adjust on hover effects
   .display-results {
     h3::before {
       top: 30px;
@@ -93,6 +97,7 @@
 }
 
 @media (max-width: 370px) {
+  // adjust main searchbox for very narrow viewports
   .search-box {
     &:hover > .search-text,
     &:focus > .search-text {
