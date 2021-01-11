@@ -373,14 +373,13 @@ h3 {
 h3::before {
   content: "";
   height: 5px;
-  width: 40px;
+  width: 0px;
   background-color: #e84118;
   position: absolute;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   -webkit-transition: .8s;
   transition: .8s;
-  opacity: 0;
 }
 
 button {
@@ -714,7 +713,7 @@ li:focus .fas {
 
 li:hover h3::before,
 li:focus h3::before {
-  opacity: 1;
+  width: 40px;
 }
 
 span {
@@ -801,10 +800,13 @@ span {
   left: 50%;
 }
 
-.pokemon-holder:hover::after, .pokemon-holder:focus::after,
+.pokemon-holder:hover::after, .pokemon-holder:focus::after {
+  opacity: 1;
+}
+
 .pokemon-holder:hover h3::before,
 .pokemon-holder:focus h3::before {
-  opacity: 1;
+  width: 40px;
 }
 
 footer {

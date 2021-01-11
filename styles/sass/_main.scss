@@ -74,7 +74,7 @@ li:focus .fas {
 
 li:hover h3::before,
 li:focus h3::before {
-  opacity: 1;
+  width: 40px;
 }
 
 span {
@@ -143,9 +143,11 @@ span {
     left: 50%;
   }
   &:hover::after,
-  &:focus::after,
+  &:focus::after {
+    opacity: 1;
+  }
   &:hover h3::before,
   &:focus h3::before {
-    opacity: 1;
+    width: 40px;
   }
 }

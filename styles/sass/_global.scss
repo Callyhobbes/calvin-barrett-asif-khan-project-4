@@ -64,12 +64,11 @@ h3 {
   &::before {
     content: "";
     height: 5px;
-    width: 40px;
+    width: 0px;
     background-color: $red;
     position: absolute;
     transform: translateX(-50%);
     transition: .8s;
-    opacity: 0;
   }
 }
 
