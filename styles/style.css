@@ -385,6 +385,7 @@ h3::before {
 button {
   text-decoration: none;
   border: none;
+  cursor: pointer;
 }
 
 header {
@@ -716,7 +717,7 @@ li:focus h3::before {
   width: 40px;
 }
 
-span {
+li span {
   font-size: 2.5rem;
   font-weight: 400;
   display: block;
@@ -807,6 +808,88 @@ span {
 .pokemon-holder:hover h3::before,
 .pokemon-holder:focus h3::before {
   width: 40px;
+}
+
+.paint-holder {
+  border: none;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.paint-holder:hover > .paint:nth-child(1) {
+  -webkit-transform: translate(-35px, -20px) rotate(-20deg) scale(1, 1);
+          transform: translate(-35px, -20px) rotate(-20deg) scale(1, 1);
+}
+
+.paint-holder:hover > .paint:nth-child(2) {
+  -webkit-transform: translate(21px, -20px) rotate(20deg) scale(1, 1);
+          transform: translate(21px, -20px) rotate(20deg) scale(1, 1);
+}
+
+.paint-holder:hover > .paint:nth-child(3) {
+  -webkit-transform: translate(81px, -20px) rotate(-20deg) scale(1, 1);
+          transform: translate(81px, -20px) rotate(-20deg) scale(1, 1);
+}
+
+.paint-holder:hover > .paint:nth-child(4) {
+  -webkit-transform: translate(131px, -20px) rotate(20deg) scale(1, 1);
+          transform: translate(131px, -20px) rotate(20deg) scale(1, 1);
+}
+
+.paint-holder:hover {
+  color: #fff;
+}
+
+.paint {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #2f3640;
+  width: 95px;
+  height: 125px;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.paint:nth-child(1) {
+  -webkit-transform-origin: 50% 0;
+          transform-origin: 50% 0;
+  -webkit-transform: translate(-35px, -20px) rotate(-20deg) scale(1, 0);
+          transform: translate(-35px, -20px) rotate(-20deg) scale(1, 0);
+}
+
+.paint:nth-child(2) {
+  -webkit-transform-origin: 50% 100%;
+          transform-origin: 50% 100%;
+  -webkit-transform: translate(21px, -20px) rotate(20deg) scale(1, 0);
+          transform: translate(21px, -20px) rotate(20deg) scale(1, 0);
+  -webkit-transition-delay: .3s;
+          transition-delay: .3s;
+}
+
+.paint:nth-child(3) {
+  -webkit-transform-origin: 50% 0%;
+          transform-origin: 50% 0%;
+  -webkit-transform: translate(81px, -20px) rotate(-20deg) scale(1, 0);
+          transform: translate(81px, -20px) rotate(-20deg) scale(1, 0);
+  -webkit-transition-delay: .6s;
+          transition-delay: .6s;
+}
+
+.paint:nth-child(4) {
+  -webkit-transform-origin: 50% 100%;
+          transform-origin: 50% 100%;
+  -webkit-transform: translate(131px, -20px) rotate(20deg) scale(1, 0);
+          transform: translate(131px, -20px) rotate(20deg) scale(1, 0);
+  -webkit-transition-delay: .9s;
+          transition-delay: .9s;
+}
+
+.label {
+  position: relative;
+  -webkit-transition: .5s;
+  transition: .5s;
 }
 
 footer {

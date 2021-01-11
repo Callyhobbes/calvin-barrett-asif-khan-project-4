@@ -227,7 +227,13 @@ const app = {
                 </div>
               </div>
               <div class="next-section">
-                <a href="#because-you-like">Find More</a>
+                <a class="paint-holder" href="#because-you-like">
+                  <span class="paint"></span>
+                  <span class="paint"></span>
+                  <span class="paint"></span>
+                  <span class="paint"></span>
+                  <span class="label">Find More</span>
+                </a>
               </div>
               `;
               // Footer Template
@@ -239,7 +245,13 @@ const app = {
                 <h2>Other Pokemon You May Like</h2>
                 <div class="suggestion-results"></div>
                 <div class="next-section">
-                  <a id="secondButton" href="#start">Try Again</a>
+                  <a class="paint-holder" id="secondButton" href="#start">
+                    <span class="paint"></span>
+                    <span class="paint"></span>
+                    <span class="paint"></span>
+                    <span class="paint"></span>
+                    <span class="label">Try Again</span>
+                  </a>
                 </div>
                 `;
               
