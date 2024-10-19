@@ -199,7 +199,7 @@ const app = {
               const pokeID = item.id;
               const pokeName = item.name;
               const elementType = item.types[0].type.name;
-              const image = `https://pokeres.bastionbot.org/images/pokemon/${pokeID}.png`;
+              const image = `https://img.pokemondb.net/artwork/large/${pokeName}.jpg`;
               // Main Template
               const displayPokemon = `
               <h2>${pokeName}</h2>
