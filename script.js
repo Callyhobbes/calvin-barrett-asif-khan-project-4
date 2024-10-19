@@ -282,7 +282,7 @@ const app = {
                   const pokemonHolder = `
                   <div class="pokemon-holder ${elementType}" value="${copiedArray[i].id}">
                     <h3>${copiedArray[i].name}</h3>
-                    <img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png" alt="A picture of ${copiedArray[i].name}">
+                    <img src="https://img.pokemondb.net/artwork/large/${copiedArray[i].name}.jpg" alt="A picture of ${copiedArray[i].name}">
                   </div>
                   `;
                   $('.suggestion-results').append(pokemonHolder);
@@ -302,7 +302,7 @@ const app = {
                   const pokemonHolder = `
                   <div class="pokemon-holder ${elementType}" value="${copiedArray[i].id}">
                     <h3>${copiedArray[i].name}</h3>
-                    <img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png" alt="A picture of ${copiedArray[i].name}">
+                    <img src="https://img.pokemondb.net/artwork/large/${copiedArray[i].name}.jpg" alt="A picture of ${copiedArray[i].name}">
                   </div>
                   `;
                   $('.suggestion-results').append(pokemonHolder);
@@ -321,7 +321,7 @@ const app = {
                   const pokemonHolder = `
                   <div class="pokemon-holder ${elementType}" value="${copiedArray[i].id}">
                     <h3>${copiedArray[i].name}</h3>
-                    <img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png" alt="A picture of ${copiedArray[i].name}">
+                    <img src="https://img.pokemondb.net/artwork/large/${copiedArray[i].name}.jpg" alt="A picture of ${copiedArray[i].name}">
                   </div>
                   `;
                   $('.suggestion-results').append(pokemonHolder);
@@ -340,7 +340,7 @@ const app = {
                   const pokemonHolder = `
                   <div class="pokemon-holder ${elementType}" value="${copiedArray[i].id}">
                     <h3>${copiedArray[i].name}</h3>
-                    <img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png" alt="A picture of ${copiedArray[i].name}">
+                    <img src="https://img.pokemondb.net/artwork/large/${copiedArray[i].name}.jpg" alt="A picture of ${copiedArray[i].name}">
                   </div>
                   `;
                   $('.suggestion-results').append(pokemonHolder);
@@ -359,7 +359,7 @@ const app = {
                   const pokemonHolder = `
                   <div class="pokemon-holder ${elementType}" value="${copiedArray[i].id}">
                     <h3>${copiedArray[i].name}</h3>
-                    <img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png" alt="A picture of ${copiedArray[i].name}">
+                    <img src="https://img.pokemondb.net/artwork/large/${copiedArray[i].name}.jpg" alt="A picture of ${copiedArray[i].name}">
                   </div>
                   `;
                   $('.suggestion-results').append(pokemonHolder);
@@ -378,7 +378,7 @@ const app = {
                   const pokemonHolder = `
                   <div class="pokemon-holder ${elementType}" value="${copiedArray[i].id}">
                     <h3>${copiedArray[i].name}</h3>
-                    <img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png" alt="A picture of ${copiedArray[i].name}">
+                    <img src="https://img.pokemondb.net/artwork/large/${copiedArray[i].name}.jpg" alt="A picture of ${copiedArray[i].name}">
                   </div>
                   `;
                   $('.suggestion-results').append(pokemonHolder);
@@ -397,7 +397,7 @@ const app = {
                   const pokemonHolder = `
                   <div class="pokemon-holder ${elementType}" value="${copiedArray[i].id}">
                     <h3>${copiedArray[i].name}</h3>
-                    <img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png" alt="A picture of ${copiedArray[i].name}">
+                    <img src="https://img.pokemondb.net/artwork/large/${copiedArray[i].name}.jpg" alt="A picture of ${copiedArray[i].name}">
                   </div>
                   `;
                   $('.suggestion-results').append(pokemonHolder);
@@ -416,7 +416,7 @@ const app = {
                   const pokemonHolder = `
                   <div class="pokemon-holder ${elementType}" value="${copiedArray[i].id}">
                     <h3>${copiedArray[i].name}</h3>
-                    <img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png" alt="A picture of ${copiedArray[i].name}">
+                    <img src="https://img.pokemondb.net/artwork/large/${copiedArray[i].name}.jpg" alt="A picture of ${copiedArray[i].name}">
                   </div>
                   `;
                   $('.suggestion-results').append(pokemonHolder);
@@ -435,7 +435,7 @@ const app = {
                   const pokemonHolder = `
                   <div class="pokemon-holder ${elementType}" value="${copiedArray[i].id}">
                     <h3>${copiedArray[i].name}</h3>
-                    <img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png" alt="A picture of ${copiedArray[i].name}">
+                    <img src="https://img.pokemondb.net/artwork/large/${copiedArray[i].name}.jpg" alt="A picture of ${copiedArray[i].name}">
                   </div>
                   `;
                   $('.suggestion-results').append(pokemonHolder);
@@ -454,7 +454,7 @@ const app = {
                   const pokemonHolder = `
                   <div class="pokemon-holder ${elementType}" value="${copiedArray[i].id}">
                     <h3>${copiedArray[i].name}</h3>
-                    <img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png" alt="A picture of ${copiedArray[i].name}">
+                    <img src="https://img.pokemondb.net/artwork/large/${copiedArray[i].name}.jpg" alt="A picture of ${copiedArray[i].name}">
                   </div>
                   `;
                   $('.suggestion-results').append(pokemonHolder);
@@ -473,7 +473,7 @@ const app = {
                   const pokemonHolder = `
                   <div class="pokemon-holder ${elementType}" value="${copiedArray[i].id}">
                     <h3>${copiedArray[i].name}</h3>
-                    <img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png" alt="A picture of ${copiedArray[i].name}">
+                    <img src="https://img.pokemondb.net/artwork/large/${copiedArray[i].name}.jpg" alt="A picture of ${copiedArray[i].name}">
                   </div>
                   `;
                   $('.suggestion-results').append(pokemonHolder);
@@ -492,7 +492,7 @@ const app = {
                   const pokemonHolder = `
                   <div class="pokemon-holder ${elementType}" value="${copiedArray[i].id}">
                     <h3>${copiedArray[i].name}</h3>
-                    <img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png" alt="A picture of ${copiedArray[i].name}">
+                    <img src="https://img.pokemondb.net/artwork/large/${copiedArray[i].name}.jpg" alt="A picture of ${copiedArray[i].name}">
                   </div>
                   `;
                   $('.suggestion-results').append(pokemonHolder);
@@ -511,7 +511,7 @@ const app = {
                   const pokemonHolder = `
                   <div class="pokemon-holder ${elementType}" value="${copiedArray[i].id}">
                     <h3>${copiedArray[i].name}</h3>
-                    <img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png" alt="A picture of ${copiedArray[i].name}">
+                    <img src="https://img.pokemondb.net/artwork/large/${copiedArray[i].name}.jpg" alt="A picture of ${copiedArray[i].name}">
                   </div>
                   `;
                   $('.suggestion-results').append(pokemonHolder);
@@ -530,7 +530,7 @@ const app = {
                   const pokemonHolder = `
                   <div class="pokemon-holder ${elementType}" value="${copiedArray[i].id}">
                     <h3>${copiedArray[i].name}</h3>
-                    <img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png" alt="A picture of ${copiedArray[i].name}">
+                    <img src="https://img.pokemondb.net/artwork/large/${copiedArray[i].name}.jpg" alt="A picture of ${copiedArray[i].name}">
                   </div>
                   `;
                   $('.suggestion-results').append(pokemonHolder);
@@ -549,7 +549,7 @@ const app = {
                   const pokemonHolder = `
                   <div class="pokemon-holder ${elementType}" value="${copiedArray[i].id}">
                     <h3>${copiedArray[i].name}</h3>
-                    <img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png" alt="A picture of ${copiedArray[i].name}">
+                    <img src="https://img.pokemondb.net/artwork/large/${copiedArray[i].name}.jpg" alt="A picture of ${copiedArray[i].name}">
                   </div>
                   `;
                   $('.suggestion-results').append(pokemonHolder);
@@ -568,7 +568,7 @@ const app = {
                   const pokemonHolder = `
                   <div class="pokemon-holder ${elementType}" value="${copiedArray[i].id}">
                     <h3>${copiedArray[i].name}</h3>
-                    <img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png" alt="A picture of ${copiedArray[i].name}">
+                    <img src="https://img.pokemondb.net/artwork/large/${copiedArray[i].name}.jpg" alt="A picture of ${copiedArray[i].name}">
                   </div>
                   `;
                   $('.suggestion-results').append(pokemonHolder);
@@ -587,7 +587,7 @@ const app = {
                   const pokemonHolder = `
                   <div class="pokemon-holder ${elementType}" value="${copiedArray[i].id}">
                     <h3>${copiedArray[i].name}</h3>
-                    <img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png" alt="A picture of ${copiedArray[i].name}">
+                    <img src="https://img.pokemondb.net/artwork/large/${copiedArray[i].name}.jpg" alt="A picture of ${copiedArray[i].name}">
                   </div>
                   `;
                   $('.suggestion-results').append(pokemonHolder);
@@ -606,7 +606,7 @@ const app = {
                   const pokemonHolder = `
                   <div class="pokemon-holder ${elementType}" value="${copiedArray[i].id}">
                     <h3>${copiedArray[i].name}</h3>
-                    <img src="https://pokeres.bastionbot.org/images/pokemon/${copiedArray[i].id}.png" alt="A picture of ${copiedArray[i].name}">
+                    <img src="https://img.pokemondb.net/artwork/large/${copiedArray[i].name}.jpg" alt="A picture of ${copiedArray[i].name}">
                   </div>
                   `;
                   $('.suggestion-results').append(pokemonHolder);
